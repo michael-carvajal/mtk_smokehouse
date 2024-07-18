@@ -7,7 +7,7 @@
       return (
         <header className='flex md:flex-col md:items-center'>
           <div className='h-24'>MTK Logo</div>
-          <ul className='hidden md:flex'>
+          <ul className='hidden md:flex text-xl justify-around w-full'>
             <li>Home</li>
             <li>Our Roots</li>
             <li>Products</li>
