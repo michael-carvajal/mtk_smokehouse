@@ -5,9 +5,9 @@
     function Navigation({ isLoaded }){
 
       return (
-        <header>
-          <div>MTK Logo</div>
-          <ul>
+        <header className='flex md:flex-col md:items-center'>
+          <div className='h-24'>MTK Logo</div>
+          <ul className='hidden md:flex'>
             <li>Home</li>
             <li>Our Roots</li>
             <li>Products</li>
