@@ -1,6 +1,7 @@
 
   import React from 'react';
-  import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+
   import { BrowserRouter } from 'react-router-dom';
   import { Provider } from 'react-redux';
   import './index.css';
@@ -29,11 +30,7 @@
       </ModalProvider>
     );
   }
+  const domNode = document.getElementById('root');
 
-  ReactDOM.render(
-    <React.StrictMode>
-      <Root />
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-                
+  const root = createRoot(domNode);
+  root.render(<Root />)
