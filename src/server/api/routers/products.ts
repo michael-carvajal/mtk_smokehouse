@@ -18,18 +18,18 @@ export const productsRouter = createTRPCRouter({
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
-        return ctx.db.products.create({
+      return ctx.db.product.create({
         data: {
           name: input.name,
-          createdById: ctx.session.user.id  ,
+          createdById: ctx.session.user.id,
         },
       });
     }),
 
-
   getLatestProduct: protectedProcedure.query(async ({ ctx }) => {
-    const firstProduct = await ctx.db.products.findFirst({
-      where: { createdBy:{ id: ctx.session.user.id } },
+    const firstProduct = await ctx.db.product.findFirst({
+      orderBy: { createdAt: "desc" },
+      where: { createdBy: { id: ctx.session.user.id } },
     });
 
     return firstProduct ?? null;

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { api } from "~/trpc/react";
 
 export function Products() {
-  const Products = api.product.getLatestProduct.useQuery()
+  const [Products] = api.product.getLatestProduct.useSuspenseQuery()
   const utils = api.useUtils();
   const [productName, setProductName] = useState("");
   const createProduct = api.product.create.useMutation({
@@ -14,14 +14,14 @@ export function Products() {
       setProductName("");
     },
   });
-console.log(Products);
+  console.log(Products);
   return (
     <div className="w-full max-w-xs">
-    {/* // {Products ? (
-    //     <p className="truncate">Your most recent product: {Products.name}</p>
-    //   ) : (
-    //     <p>You have no products yet.</p>
-    //   )} */}
+    {Products ? (
+        <p className="truncate">Your most recent product: {Products.name}</p>
+      ) : (
+        <p>You have no products yet.</p>
+      )}
       <form
         onSubmit={(e) => {
           e.preventDefault();
