@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Products } from "./_components/products";
 
 export default function HomePage() {
   return (
@@ -31,6 +32,7 @@ export default function HomePage() {
             </div>
           </Link>
         </div>
+        <Products />
       </div>
     </main>
   );
