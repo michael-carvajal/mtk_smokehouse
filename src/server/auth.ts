@@ -6,9 +6,15 @@ import {
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
-
+import CredentialsProvider from "next-auth/providers/credentials";
 import { env } from "~/env";
 import { db } from "~/server/db";
+import { compare } from 'bcrypt';
+
+export async function verifyPassword(password: string, hashedPassword: string) {
+  const isValid = await compare(password, hashedPassword);
+  return isValid;
+}
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -51,6 +57,31 @@ export const authOptions: NextAuthOptions = {
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
       clientSecret: env.DISCORD_CLIENT_SECRET,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials.password) {
+          throw new Error("Missing email or password");
+        }
+
+        const user = await db.user.findUnique({
+          where: { email: credentials.email },
+        });
+
+        if (
+          !user ||
+          !(await verifyPassword(credentials.password, user.password))
+        ) {
+          throw new Error("Invalid email or password");
+        }
+
+        return { id: user.id, email: user.email, name: user.name };
+      },
     }),
     /**
      * ...add more providers here.
