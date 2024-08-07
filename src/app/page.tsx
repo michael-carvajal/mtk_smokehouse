@@ -2,7 +2,7 @@
 import { SessionProvider } from 'next-auth/react'
 import Link from "next/link";
 import { Products } from "./_components/products";
-
+import SignInAndOut from "./_components/signInAndOut"
 export default function HomePage() {
   return (
 
@@ -36,9 +36,7 @@ export default function HomePage() {
               </div>
             </Link>
           </div>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="/api/auth/signin">Sign In</Link>
+          <SignInAndOut />
           <Products />
         </div>
       </main>
