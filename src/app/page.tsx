@@ -1,5 +1,5 @@
-'use client' 
-import { SessionProvider } from 'next-auth/react' 
+'use client'
+import { SessionProvider } from 'next-auth/react'
 import Link from "next/link";
 import { Products } from "./_components/products";
 
@@ -36,6 +36,9 @@ export default function HomePage() {
               </div>
             </Link>
           </div>
+          <Link
+            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+            href="/api/auth/signin">Sign In</Link>
           <Products />
         </div>
       </main>
