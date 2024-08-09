@@ -1,9 +1,14 @@
 "use client";
+import { useSession } from 'next-auth/react';
 import React, { useState, useEffect } from 'react';
 import { api } from '~/utils/api';
 
 export function Products() {
     const [latestProduct, setLatestProduct] = useState(null);
+    const { data: session, status } = useSession()
+    console.log("session =====>", session, "\n status ===>", status);
+
+
     const [productName, setProductName] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,28 +34,27 @@ export function Products() {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-            await api.createProduct(productName);
-            setProductName('');
-            const product = await api.getLatestProduct();
-            setLatestProduct(product);
+            const newestProduct = await api.createProduct(productName);
+            console.log("product in handle submit ==========>    ", newestProduct);
+
+            setLatestProduct(newestProduct);
         } catch (error) {
             console.error(error);
         } finally {
             setIsSubmitting(false);
         }
     };
+    console.log(productName);
+
     return (
         <div className="w-full max-w-xs">
-            {Products ? (
-                <p className="truncate">Your most recent product: {latestProduct?.name}</p>
+            {latestProduct ? (
+                <p className="truncate">Your most recent product: {isLoading ? "Loading..." : latestProduct?.name}</p>
             ) : (
                 <p>You have no products yet.</p>
             )}
             <form
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    // createProduct.mutate({ name: productName });
-                }}
+                onSubmit={handleSubmit}
                 className="flex flex-col gap-2"
             >
                 <input
@@ -65,7 +69,7 @@ export function Products() {
                     className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
                 // disabled={createProduct.isPending}
                 >
-                    {/* {createProduct.isPending ? "Submitting..." : "Submit"} */}
+                    {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
             </form>
         </div>
