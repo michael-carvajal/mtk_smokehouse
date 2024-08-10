@@ -34,7 +34,9 @@ export function Products() {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-            const newestProduct = await api.createProduct(productName);
+            console.log("session user in handle subit ---------->",  session?.user);
+            
+            const newestProduct = await api.createProduct(productName, session?.user.id);
             console.log("product in handle submit ==========>    ", newestProduct);
 
             setLatestProduct(newestProduct);
