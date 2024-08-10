@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../../components/ui/button'
 const Navbar = () => {
   return (
-    <nav className="bg-white shadow">
+    <nav>
       <div className="mx-auto px-4 py-2 flex justify-between items-center">
         <a className="text-lg font-bold text-gray-900">MyApp</a>
         <div>
