@@ -8,9 +8,9 @@ export const getLatestProduct = async () => {
     return latestProduct;
   };
   
-  export const createProduct = async (name: string) => {
+  export const createProduct = async (name: string, createdBy: string) => {
     const newProduct = await db.product.create({
-      data: { name },
+      data: { name, createdBy : { connect: { id: createdBy } } }
     });
     return newProduct;
   };
