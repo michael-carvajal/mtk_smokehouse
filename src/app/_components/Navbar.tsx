@@ -9,14 +9,20 @@ const Navbar = () => {
       </div>
       <div className="mx-auto px-4 py-2 flex justify-between items-center">
         <div>
-          <Button variant='ghost' className='text-slate-600'>
-            Home
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Smoked Salmon
           </Button>
-          <Button variant='ghost' className='text-slate-600'>
-            About
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Our Roots
           </Button>
-          <Button variant='ghost' className='text-slate-600'>
-            Contact
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Contact / Locations
+          </Button>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Jobs
+          </Button>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Order Online
           </Button>
         </div>
         <Button variant='ghost' className='text-slate-600'>
