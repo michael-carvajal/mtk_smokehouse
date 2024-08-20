@@ -8,19 +8,26 @@ const Navbar = () => {
         logo
       </div>
       <div className="mx-auto px-4 py-2 flex justify-between items-center">
-        <a className="text-lg font-bold text-gray-900">MyApp</a>
         <div>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Smoked Salmon
+          </Button>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Our Roots
+          </Button>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Contact / Locations
+          </Button>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Jobs
+          </Button>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Order Online
+          </Button>
           <Button variant='ghost' className='text-slate-600'>
-            Home
-          </Button>
-          <Button>
-            About
-          </Button>
-          <Button>
-            Contact
+            <SignInAndOut />
           </Button>
         </div>
-        <SignInAndOut />
       </div>
     </nav>
   );
