@@ -8,19 +8,20 @@ const Navbar = () => {
         logo
       </div>
       <div className="mx-auto px-4 py-2 flex justify-between items-center">
-        <a className="text-lg font-bold text-gray-900">MyApp</a>
         <div>
           <Button variant='ghost' className='text-slate-600'>
             Home
           </Button>
-          <Button>
+          <Button variant='ghost' className='text-slate-600'>
             About
           </Button>
-          <Button>
+          <Button variant='ghost' className='text-slate-600'>
             Contact
           </Button>
         </div>
-        <SignInAndOut />
+        <Button variant='ghost' className='text-slate-600'>
+          <SignInAndOut />
+        </Button>
       </div>
     </nav>
   );
