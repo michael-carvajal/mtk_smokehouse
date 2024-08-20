@@ -24,10 +24,10 @@ const Navbar = () => {
           <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
             Order Online
           </Button>
+          <Button variant='ghost' className='text-slate-600'>
+            <SignInAndOut />
+          </Button>
         </div>
-        <Button variant='ghost' className='text-slate-600'>
-          <SignInAndOut />
-        </Button>
       </div>
     </nav>
   );
