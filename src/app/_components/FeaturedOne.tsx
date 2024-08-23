@@ -4,8 +4,8 @@ import { Button } from '~/components/ui/button'
 function FeaturedOne() {
     return (
         <div className='text-slate-800 flex flex-col gap-8 justify-center items-center flex-1 mx-10'>
-            <h1>OUR SMOKED SALMON</h1>
-            <h3>Whole sides, sliced sides, 1lb packs, 8oz packs, 4oz packs, and smoked salmon loin</h3>
+            <h1 className='text-2xl font-bold'>Welcome To catsmo artisanal smokehouse</h1>
+            <h3 className='text-sm'>520 Lexington Ave, Mt Kisco, NY 10549</h3>
             <div className='flex gap-8'>
                 <div className='flex flex-col flex-1 gap-7'>
                     <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Imgage</div>
