@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../components/ui/button'
-import SignInAndOut from './signInAndOut';
+import Link from 'next/link';
 const Navbar = () => {
   return (
     <nav>
@@ -20,12 +20,14 @@ const Navbar = () => {
           <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
             Jobs
           </Button>
-          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
-            Order Online
-          </Button>
-          <Button variant='ghost' className='text-slate-600'>
+          <Link href='/products'>
+            <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+              Order Online
+            </Button>
+          </Link>
+          {/* <Button variant='ghost' className='text-slate-600'>
             <SignInAndOut />
-          </Button>
+          </Button> */}
       </div>
     </nav>
   );
