@@ -22,6 +22,10 @@ export default function Contact() {
                 <div className="grid w-full items-center gap-4">
                     <Image width={300} height={300} src='/mtk_photos/storeFront.jpg' alt='store front in mount kisco' className="flex rounded flex-col space-y-1.5">
                     </Image>
+                    {/* TODO - add links for google and apple maps direction */}
+                    <Link target="_blank" href="https://www.google.com/maps/dir//520+Lexington+Ave,+Mt+Kisco,+NY+10549" className="text-center">
+                        <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>520 Lexington Ave, Mt Kisco, NY 10549</Button>
+                    </Link>
                     <div className="grid gap-4">
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Monday</div>

@@ -20,9 +20,6 @@ const Navbar = () => {
               Contact / Locations
             </Button>
           </Link>
-          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
-            Jobs
-          </Button>
           <Link href='/products'>
             <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
               Order Online
