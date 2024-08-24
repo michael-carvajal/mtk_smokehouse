@@ -15,9 +15,11 @@ const Navbar = () => {
           <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
             Our Roots
           </Button>
-          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
-            Contact / Locations
-          </Button>
+          <Link href="/contact">
+            <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+              Contact / Locations
+            </Button>
+          </Link>
           <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
             Jobs
           </Button>
