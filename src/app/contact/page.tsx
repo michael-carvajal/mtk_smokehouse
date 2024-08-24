@@ -26,6 +26,7 @@ export default function Contact() {
                     <Link target="_blank" href="https://www.google.com/maps/dir//520+Lexington+Ave,+Mt+Kisco,+NY+10549" className="text-center">
                         <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>520 Lexington Ave, Mt Kisco, NY 10549</Button>
                     </Link>
+                    <div className="text-center font-thin">Phone: <a type="" href="tel:+19142440702">(914)-244-0702</a></div>
                     <div className="grid gap-4">
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Monday</div>
