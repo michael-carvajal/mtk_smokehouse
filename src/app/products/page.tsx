@@ -38,12 +38,12 @@ function products() {
               </TableBody>
             </Table>
           </CardContent>
-          <CardFooter>
+          {/* <CardFooter>
             <div className="text-xs text-muted-foreground">
               Showing <strong>1-10</strong> of <strong>32</strong>{" "}
               products
             </div>
-          </CardFooter>
+          </CardFooter> */}
         </Card>
       </TabsContent>
     </Tabs>

@@ -8,7 +8,6 @@ import { api } from '~/utils/api';
 function ProductsList() {
     const [isLoading, setIsLoading] = useState(true);
     const [allProducts, setAllProducts] = useState([]);
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         const fetchAllProducts = async () => {
