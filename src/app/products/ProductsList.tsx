@@ -4,6 +4,7 @@ import { Badge } from '~/components/ui/badge'
 import { TableCell, TableRow } from '~/components/ui/table'
 import Image from "next/image"
 import { api } from '~/utils/api';
+import Link from 'next/link';
 
 function ProductsList() {
     const [isLoading, setIsLoading] = useState(true);
@@ -47,13 +48,15 @@ function ProductsList() {
                 : allProducts.map((product) => (
                     <TableRow key={product.id}>
                         <TableCell className="hidden sm:table-cell">
-                            <Image
-                                alt="Product image"
-                                className="aspect-square rounded-md object-cover"
-                                height="64"
-                                src="/placeholder.svg"
-                                width="64"
-                            />
+                            <Link href={`/products/${product.id}`} >
+                                <Image
+                                    alt="Product image"
+                                    className="aspect-square rounded-md object-cover"
+                                    height="64"
+                                    src="/placeholder.svg"
+                                    width="64"
+                                />
+                            </Link>     
                         </TableCell>
                         <TableCell className="font-medium">
                             {product.name}
@@ -65,24 +68,24 @@ function ProductsList() {
                             {product.price}
                         </TableCell>
                         {/* <TableCell>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button
-                                    aria-haspopup="true"
-                                    size="icon"
-                                    variant="ghost"
-                                >
-                                    <MoreHorizontal className="h-4 w-4" />
-                                    <span className="sr-only">Toggle menu</span>
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                <DropdownMenuItem>Edit</DropdownMenuItem>
-                                <DropdownMenuItem>Delete</DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </TableCell> */}
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button
+                                        aria-haspopup="true"
+                                        size="icon"
+                                        variant="ghost"
+                                    >
+                                        <MoreHorizontal className="h-4 w-4" />
+                                        <span className="sr-only">Toggle menu</span>
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                                    <DropdownMenuItem>Delete</DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </TableCell> */}
                     </TableRow>
                 ))}
         </>
