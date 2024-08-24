@@ -8,10 +8,10 @@ export default function SignInAndOut() {
     return (
         <>          {status !== "authenticated" ?
             <Link
-                className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+                className="flex  flex-col rounded-xl bg-white/10 p-4  hover:bg-white/20"
                 href="/api/auth/signin">Sign In</Link> :
             <Link
-                className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+                className="flex  flex-col rounded-xl bg-white/10 p-4  hover:bg-white/20"
                 href="/api/auth/signout">Sign out
             </Link>
         }</>

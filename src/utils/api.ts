@@ -5,6 +5,11 @@ export const api = {
     if (!response.ok) throw new Error("Failed to fetch latest product");
     return response.json();
   },
+  getAllProducts: async () => {
+    const response = await fetch("/api/products");
+    if (!response.ok) throw new Error("Failed to fetch all product");
+    return response.json();
+  },
   createProduct: async (name: string, createdBy: string) => {
     const response = await fetch("/api/products", {
       method: "POST",

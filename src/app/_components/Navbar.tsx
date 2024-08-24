@@ -1,26 +1,33 @@
 import React from 'react';
 import { Button } from '../../components/ui/button'
-import SignInAndOut from './signInAndOut';
+import Link from 'next/link';
+import Image from 'next/image';
 const Navbar = () => {
   return (
     <nav>
-      <div className='flex justify-center items-center h-32 w-32 my-0 mt-4 rounded mx-auto bg-red-400'>
-        logo
-      </div>
-      <div className="mx-auto px-4 py-2 flex justify-between items-center">
-        <a className="text-lg font-bold text-gray-900">MyApp</a>
-        <div>
-          <Button variant='ghost' className='text-slate-600'>
-            Home
+      <Link href="/" className='flex justify-center items-center h-32 w-32 my-0 mt-4 rounded mx-auto '>
+        <Image  alt='company logo' src='/mtk_photos/logo.jpg' width="128" height="128"/>
+      </Link>
+      <div className="mx-auto px-4 py-2 md:flex justify-between items-center flex-wrap hidden">
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Smoked Salmon
           </Button>
-          <Button>
-            About
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Our Roots
           </Button>
-          <Button>
-            Contact
-          </Button>
-        </div>
-        <SignInAndOut />
+          <Link href="/contact">
+            <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+              Contact / Locations
+            </Button>
+          </Link>
+          <Link href='/products'>
+            <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+              Order Online
+            </Button>
+          </Link>
+          {/* <Button variant='ghost' className='text-slate-600'>
+            <SignInAndOut />
+          </Button> */}
       </div>
     </nav>
   );
