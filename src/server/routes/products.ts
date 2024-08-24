@@ -7,6 +7,10 @@ export const getLatestProduct = async () => {
     });
     return latestProduct;
   };
+export const getAllProducts = async () => {
+    const allProducts = await db.product.findMany();
+    return allProducts;
+  };
   
   export const createProduct = async (name: string, createdBy: string) => {
     const newProduct = await db.product.create({
