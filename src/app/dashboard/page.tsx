@@ -59,10 +59,10 @@ export default function Dashboard() {
                         Customers
                     </Link>
                     <Link
-                        href="#"
+                        href="/"
                         className="text-foreground transition-colors hover:text-foreground"
                     >
-                        Settings
+                        Home
                     </Link>
                 </nav>
                 <Sheet>
@@ -109,8 +109,8 @@ export default function Dashboard() {
                             >
                                 Customers
                             </Link>
-                            <Link href="#" className="hover:text-foreground">
-                                Settings
+                            <Link href="/" className="hover:text-foreground">
+                                Home
                             </Link>
                         </nav>
                     </SheetContent>
@@ -136,7 +136,9 @@ export default function Dashboard() {
                         <DropdownMenuContent align="end">
                             <DropdownMenuLabel>My Account</DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>Settings</DropdownMenuItem>
+                            <DropdownMenuItem><Link href="/" className="hover:text-foreground">
+                                Home
+                            </Link></DropdownMenuItem>
                             <DropdownMenuItem>Support</DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem>Logout</DropdownMenuItem>
@@ -146,7 +148,7 @@ export default function Dashboard() {
             </header>
             <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
                 <div className="mx-auto grid w-full max-w-6xl gap-2">
-                    <h1 className="text-3xl font-semibold">Settings</h1>
+                    <h1 className="text-3xl font-semibold">Home</h1>
                 </div>
                 <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
                     <nav
