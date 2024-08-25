@@ -28,7 +28,7 @@ export default async function PostsPage() {
 }
 function Products() {
   return (
-    <Tabs value='all'>
+    <Tabs value='all' >
       <TabsContent value="all">
         <Card x-chunk="dashboard-06-chunk-0">
           <CardHeader>
