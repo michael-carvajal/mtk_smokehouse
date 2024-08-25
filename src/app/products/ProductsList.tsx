@@ -1,5 +1,4 @@
 'use client';
-import React, { useEffect, useState } from 'react'
 import { Badge } from '~/components/ui/badge'
 import { TableCell, TableRow } from '~/components/ui/table'
 import Image from "next/image"
