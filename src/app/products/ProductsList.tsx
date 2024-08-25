@@ -37,10 +37,10 @@ function ProductsList() {
                                 <Link href={`/products/${product.id}`} >
                                     <Image
                                         alt="Product image"
-                                        className="aspect-square rounded-md object-cover"
-                                        height="64"
-                                        src="/placeholder.svg"
-                                        width="64"
+                                        className="aspect-square rounded-md object-fit"
+                                        height={124}
+                                        src="/mtk_photos/salmon1.jpg"
+                                        width={124}
                                     />
                                 </Link>
                             </TableCell>
