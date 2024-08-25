@@ -14,7 +14,7 @@ import Link from "next/link"
 
 export default function Contact() {
     return (
-        <Card className="w-[350px] my-10">
+        <Card className="w-[350px] ">
             <CardHeader>
                 <CardTitle>Mt. Kisco, NY</CardTitle>
             </CardHeader>

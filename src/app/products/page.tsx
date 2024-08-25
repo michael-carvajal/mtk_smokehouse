@@ -1,13 +1,34 @@
 import React from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '~/components/ui/table'
 import { Tabs, TabsContent } from '~/components/ui/tabs'
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query'
 import ProductsList from './ProductsList'
+import { api } from '~/utils/api'
 
+export default async function PostsPage() {
+  const queryClient = new QueryClient()
 
-function products() {
+  await queryClient.prefetchQuery({
+    queryKey: ['allProducts'],
+    queryFn: api.getAllProducts,
+  })
+
   return (
-    <Tabs value='all'>
+    // Neat! Serialization is now as easy as passing props.
+    // HydrationBoundary is a Client Component, so hydration will happen there.
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Products />
+    </HydrationBoundary>
+  )
+}
+function Products() {
+  return (
+    <Tabs value='all' >
       <TabsContent value="all">
         <Card x-chunk="dashboard-06-chunk-0">
           <CardHeader>
@@ -50,4 +71,3 @@ function products() {
   )
 }
 
-export default products
