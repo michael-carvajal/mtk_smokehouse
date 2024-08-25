@@ -5,34 +5,22 @@ import { TableCell, TableRow } from '~/components/ui/table'
 import Image from "next/image"
 import { api } from '~/utils/api';
 import Link from 'next/link';
+import { useQuery } from '@tanstack/react-query';
 
 function ProductsList() {
-    const [isLoading, setIsLoading] = useState(true);
-    const [allProducts, setAllProducts] = useState([]);
+    // This useQuery could just as well happen in some deeper
+    // child to <Posts>, data will be available immediately either way
+    const { isLoading, data: allProducts, isError } = useQuery({
+        queryKey: ['allProducts'],
+        queryFn: () => api.getAllProducts(),
+    })
 
-    useEffect(() => {
-        const fetchAllProducts = async () => {
-            try {
-                const fetchedProducts = await api.getAllProducts();
-                console.log('all poducts from api ========> ', fetchedProducts);
+    console.log('data from the query ====>', allProducts);
 
-                setAllProducts(fetchedProducts)
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchAllProducts().catch(err => {
-            console.log(err);
-        });
-    }, []);
     return (
         <>
             {isLoading ?
                 <>
-
                     <TableRow role="status">
                         <TableCell ></TableCell>
                         <TableCell>
@@ -43,31 +31,30 @@ function ProductsList() {
                             <span className="sr-only">Loading...</span>
                         </TableCell>
                     </TableRow>
-
-                </>
-                : allProducts.map((product) => (
-                    <TableRow key={product.id}>
-                        <TableCell className="hidden sm:table-cell">
-                            <Link href={`/products/${product.id}`} >
-                                <Image
-                                    alt="Product image"
-                                    className="aspect-square rounded-md object-cover"
-                                    height="64"
-                                    src="/placeholder.svg"
-                                    width="64"
-                                />
-                            </Link>     
-                        </TableCell>
-                        <TableCell className="font-medium">
-                            {product.name}
-                        </TableCell>
-                        <TableCell>
-                            <Badge variant="outline">Available</Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                            {product.price}
-                        </TableCell>
-                        {/* <TableCell>
+                </> : isError ? <div>Sorry we are having trouble loading our products</div>
+                    : allProducts.map((product) => (
+                        <TableRow key={product.id}>
+                            <TableCell className="hidden sm:table-cell">
+                                <Link href={`/products/${product.id}`} >
+                                    <Image
+                                        alt="Product image"
+                                        className="aspect-square rounded-md object-cover"
+                                        height="64"
+                                        src="/placeholder.svg"
+                                        width="64"
+                                    />
+                                </Link>
+                            </TableCell>
+                            <TableCell className="font-medium">
+                                {product.name}
+                            </TableCell>
+                            <TableCell>
+                                <Badge variant="outline">Available</Badge>
+                            </TableCell>
+                            <TableCell className="hidden md:table-cell">
+                                {product.price}
+                            </TableCell>
+                            {/* <TableCell>
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                     <Button
@@ -86,8 +73,8 @@ function ProductsList() {
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell> */}
-                    </TableRow>
-                ))}
+                        </TableRow>
+                    ))}
         </>
     )
 }

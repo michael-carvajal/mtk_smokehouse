@@ -14,7 +14,7 @@ export default async function PostsPage() {
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery({
-    queryKey: ['products'],
+    queryKey: ['allProducts'],
     queryFn: api.getAllProducts,
   })
 
