@@ -18,7 +18,7 @@ import { usePathname } from 'next/navigation'
 function DashboardNavBar() {
     const pathname = usePathname()
     return (
-        <header className={`sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 ${pathname !== "/dashboard" && "hidden"} w-full`}>
+        <header className={`sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 ${!pathname.startsWith("/dashboard") && "hidden"} w-full`}>
             <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                 <Link
                     href="#"
