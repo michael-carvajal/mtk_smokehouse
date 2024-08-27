@@ -14,9 +14,11 @@ const Navbar = () => {
         <Image  alt='company logo' src='/mtk_photos/logo.jpg' width="128" height="128"/>
       </Link>
       <div className="mx-auto px-4 py-2 md:flex justify-between items-center flex-wrap hidden">
-          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
-            Smoked Salmon
-          </Button>
+          <Link href='/products/1'>
+            <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+              Smoked Salmon
+            </Button>
+          </Link>
           <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
             Our Roots
           </Button>
