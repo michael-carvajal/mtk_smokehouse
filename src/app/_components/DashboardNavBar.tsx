@@ -134,7 +134,7 @@ function DashboardNavBar() {
                         </Link></DropdownMenuItem>
                         <DropdownMenuItem>Support</DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Logout</DropdownMenuItem>
+                        <DropdownMenuItem><Link href="/api/auth/signout">Logout</Link></DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
