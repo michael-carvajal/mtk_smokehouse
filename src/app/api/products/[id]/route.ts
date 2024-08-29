@@ -2,8 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { getProductById, updateProduct, deleteProduct } from '~/server/routes/products';
 
 export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get('id');
+  const id = parseInt(req.url.split('/').at(-1)!);
 
   if (!id) {
     return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
