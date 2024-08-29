@@ -27,13 +27,12 @@ function DashboardNavBar() {
                 >
                     <Package2 className="h-6 w-6" />
                 </Link>
-                <div className='text-slate-900'>hello</div>
                 <DashboardNavLinks pathname={pathname}/>
             </nav>
             <Sheet>
                 <SheetTrigger asChild>
                     <Button
-                        variant="outline"
+                        variant="secondary"
                         size="icon"
                         className="shrink-0 md:hidden"
                     >
@@ -48,35 +47,9 @@ function DashboardNavBar() {
                             className="flex items-center gap-2 text-lg font-semibold"
                         >
                             <Package2 className="h-6 w-6" />
-                            <span className="sr-only">Acme Inc</span>
+                            <span className="sr-only">Mt Kisco Smokehouse</span>
                         </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Dashboard
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Orders
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Products
-                        </Link>
-                        <Link
-                            href="#"
-                            className="text-muted-foreground hover:text-foreground"
-                        >
-                            Customers
-                        </Link>
-                        <Link href="/" className="hover:text-foreground">
-                            Home
-                        </Link>
+                        <DashboardNavLinks pathname={pathname} />
                     </nav>
                 </SheetContent>
             </Sheet>
