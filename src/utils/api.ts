@@ -10,11 +10,6 @@ export const api = {
     if (!response.ok) throw new Error("Failed to fetch all products");
     return response.json();
   },
-  getHomePage: async () => {
-    const response = await fetch("/api/homePage");
-    if (!response.ok) throw new Error("Failed to fetch all products");
-    return response.json();
-  },
   createProduct: async (name: string, createdBy: string) => {
     const response = await fetch("/api/products", {
       method: "POST",
@@ -29,6 +24,20 @@ export const api = {
   getProductById: async (id: string) => {
     const response = await fetch(`/api/products/${id}`);
     if (!response.ok) throw new Error("Failed to fetch product");
+    return response.json();
+  },
+  getHomePage: async () => {
+    const response = await fetch("/api/homePage");
+    if (!response.ok) throw new Error("Failed to fetch all products");
+    return response.json();
+  },
+  updateHomePage: async (body) => {
+    const response = await fetch(`/api/homePage/1`, {
+      method: "PATCH",
+      headers : {"Content-Type" : "application/json"},
+      body : JSON.stringify({...body})
+    });
+    if (!response.ok) throw new Error("Failed to update home page");
     return response.json();
   },
 };

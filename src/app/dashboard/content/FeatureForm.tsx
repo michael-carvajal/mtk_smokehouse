@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
 import { Input } from '~/components/ui/input'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { api } from '~/utils/api'
 import { Textarea } from '~/components/ui/textarea'
 
@@ -15,6 +15,7 @@ function FeatureForm() {
         queryKey: ['homePage'],
         queryFn: () => api.getHomePage(),
     });
+
 
     // State to hold the feature values
     const [featureOneTitle, setFeatureOneTitle] = useState("");
@@ -32,10 +33,15 @@ function FeatureForm() {
         }
     }, [homePage]);
 
-    const handleSave = () => {
-        // Implement save logic here
-        console.log('Saved', { featureOneTitle, featureOneBody, featureOneLink });
-    };
+
+    const mutation = useMutation({
+        mutationFn: api.updateHomePage,
+        onSuccess: () => {
+            // Invalidate and refetch
+            queryClient.invalidateQueries({ queryKey: ['homePage'] })
+        },
+    })
+
 
     const handleInputChange = (e, setInputValue) => {
         setInputValue(e.target.value);
@@ -53,7 +59,7 @@ function FeatureForm() {
             <CardContent>
                 <div className='flex flex-col flex-1 gap-7 max-w-72'>
                     <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Image</div>
-                    <h4>{isEditing ? <Input  value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
+                    <h4>{isEditing ? <Input value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
                     <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                     <div className="w-full flex gap-8 relative">
                         {isEditing ? (
@@ -70,7 +76,10 @@ function FeatureForm() {
                 </div>
             </CardContent>
             <CardFooter className="border-t px-6 py-4">
-                <Button onClick={handleSave}>Save</Button>
+                <Button onClick={() => {
+                    mutation.mutate({ featureOneTitle, featureOneBody, featureOneLink })
+                }}>Save</Button>
+                {mutation.error && <div className='text-slate-900'>{mutation.error.message}</div>}
             </CardFooter>
         </Card>
     )
