@@ -1,7 +1,7 @@
 'use client'
 
 import { Edit } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
 import { Input } from '~/components/ui/input'
@@ -15,12 +15,21 @@ function FeatureForm() {
         queryFn: () => api.getHomePage(),
     });
 
-    // Initializing state with fetched data or default values
-    const [featureOneTitle, setFeatureOneTitle] = useState(homePage?.featureOneTitle || "Default Title");
-    const [featureOneBody, setFeatureOneBody] = useState(homePage?.featureOneBody || "Default Body");
-    const [featureOneLink, setFeatureOneLink] = useState(homePage?.featureOneLink || "SHOP FOR GOLD LABEL SMOKED SALMON");
+    // State to hold the feature values
+    const [featureOneTitle, setFeatureOneTitle] = useState("");
+    const [featureOneBody, setFeatureOneBody] = useState("");
+    const [featureOneLink, setFeatureOneLink] = useState("SHOP FOR GOLD LABEL SMOKED SALMON");
 
     const [isEditing, setIsEditing] = useState(false);
+
+    // Use useEffect to update the state when homePage data is available
+    useEffect(() => {
+        if (homePage) {
+            setFeatureOneTitle(homePage.featureOneTitle || "Default Title");
+            setFeatureOneBody(homePage.featureOneBody || "Default Body");
+            setFeatureOneLink(homePage.featureOneLink || "SHOP FOR GOLD LABEL SMOKED SALMON");
+        }
+    }, [homePage]);
 
     const handleSave = () => {
         // Implement save logic here
