@@ -53,7 +53,7 @@ function FeatureForm() {
             <CardContent>
                 <div className='flex flex-col flex-1 gap-7 max-w-72'>
                     <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Image</div>
-                    <h4>{featureOneTitle}</h4>
+                    <h4>{isEditing ? <Input  value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
                     <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                     <div className="w-full flex gap-8 relative">
                         {isEditing ? (
