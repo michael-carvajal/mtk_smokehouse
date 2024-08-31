@@ -1,5 +1,3 @@
-import { getHomePage } from "~/server/routes/homePage";
-
 // src/utils/api.ts
 export const api = {
   getLatestProduct: async () => {

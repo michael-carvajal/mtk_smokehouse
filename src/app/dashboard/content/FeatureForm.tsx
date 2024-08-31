@@ -1,22 +1,40 @@
 'use client'
 
 import { Edit } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
 import { Input } from '~/components/ui/input'
-import { useState } from "react"
+import { useQuery } from '@tanstack/react-query'
+import { api } from '~/utils/api'
 
 function FeatureForm() {
-    const [featureOneLink, setFeatureOneLink] = useState("SHOP FOR GOLD LABEL SMOKED SALMON")
-    const [isEditting, setisEditting] = useState(false)
+    // Fetching the data using React Query
+    const { isLoading, data: homePage } = useQuery({
+        queryKey: ['homePage'],
+        queryFn: () => api.getHomePage(),
+    });
+
+    // Initializing state with fetched data or default values
+    const [featureOneTitle, setFeatureOneTitle] = useState(homePage?.featureOneTitle || "Default Title");
+    const [featureOneBody, setFeatureOneBody] = useState(homePage?.featureOneBody || "Default Body");
+    const [featureOneLink, setFeatureOneLink] = useState(homePage?.featureOneLink || "SHOP FOR GOLD LABEL SMOKED SALMON");
+
+    const [isEditing, setIsEditing] = useState(false);
+
     const handleSave = () => {
-  
+        // Implement save logic here
+        console.log('Saved', { featureOneTitle, featureOneBody, featureOneLink });
+    };
+
+    const handleLinkChange = (e) => {
+        setFeatureOneLink(e.target.value);
+    };
+
+    if (isLoading) {
+        return <div>Loading....</div>;
     }
-  
-    const handleLinkChange = (e, setFeatureLink) => {
-      setFeatureLink(e.target.value)
-    }
+
     return (
         <Card x-chunk="dashboard-04-chunk-1">
             <CardHeader>
@@ -24,15 +42,20 @@ function FeatureForm() {
             </CardHeader>
             <CardContent>
                 <div className='flex flex-col flex-1 gap-7 max-w-72'>
-                    <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Imgage</div>
-                    <h4>SMOKEHOUSE GOLD LABEL</h4>
-                    <div className='text-xs font-semibold text-slate-400 '>Our Gold Label is what made MT. Kisco Smokehouse what it is today. With its rich, buttery texture and sweet lacing of fruit-wood smoke, it accounts for most of our smoked salmon sales. Smoked with the perfect blend of apple and cherry woods, our salmon is praised for its delicate smoked flavor and silky texture. Our salmon comes from the best aquaculture farms located in the the icy Northern Atlantic off the coast of Scotland. We receive daily deliveries of fresh Atlantic salmon flown in directly from the farms fresh, never frozen, giving it an amazingly silky texture, and rich, deep orange color.</div>
+                    <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Image</div>
+                    <h4>{featureOneTitle}</h4>
+                    <div className='text-xs font-semibold text-slate-400 '>{featureOneBody}</div>
                     <div className="w-full flex gap-8 relative">
-                        {isEditting ? <Button variant='ghost' className='text-slate-600 w-full relative'>
-                            <Input value={featureOneLink} onChange={(e) => handleLinkChange(e, setFeatureOneLink)} />
-                        </Button> : <a href='#'><Button variant='ghost' className='text-slate-600'>{featureOneLink}</Button></a>
-                        }
-                        <Edit onClick={() => setisEditting(!isEditting)} className="absolute -right-20 cursor-pointer" />
+                        {isEditing ? (
+                            <Button variant='ghost' className='text-slate-600 w-full relative'>
+                                <Input value={featureOneLink} onChange={handleLinkChange} />
+                            </Button>
+                        ) : (
+                            <a href='#'>
+                                <Button variant='ghost' className='text-slate-600'>{featureOneLink}</Button>
+                            </a>
+                        )}
+                        <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
                     </div>
                 </div>
             </CardContent>
@@ -43,4 +66,4 @@ function FeatureForm() {
     )
 }
 
-export default FeatureForm
+export default FeatureForm;
