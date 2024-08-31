@@ -32,7 +32,7 @@ export const api = {
     return response.json();
   },
   updateHomePage: async (body) => {
-    const response = await fetch(`/api/homePage/1`, {
+    const response = await fetch(`/api/homePage`, {
       method: "PATCH",
       headers : {"Content-Type" : "application/json"},
       body : JSON.stringify({...body})

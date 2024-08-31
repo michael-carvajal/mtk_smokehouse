@@ -6,3 +6,13 @@ export const getHomePage = async () => {
     return homePage;
   };
   
+export const updateHomePage = async (body) => {
+    const homePage = await db.homePage.update({
+      where : {
+        id : 1
+      },
+      data : {...body}
+    });
+    return homePage;
+  };
+  
