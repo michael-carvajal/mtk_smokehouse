@@ -26,4 +26,18 @@ export const api = {
     if (!response.ok) throw new Error("Failed to fetch product");
     return response.json();
   },
+  getHomePage: async () => {
+    const response = await fetch("/api/homePage");
+    if (!response.ok) throw new Error("Failed to fetch all products");
+    return response.json();
+  },
+  updateHomePage: async (body) => {
+    const response = await fetch(`/api/homePage`, {
+      method: "PATCH",
+      headers : {"Content-Type" : "application/json"},
+      body : JSON.stringify({...body})
+    });
+    if (!response.ok) throw new Error("Failed to update home page");
+    return response.json();
+  },
 };
