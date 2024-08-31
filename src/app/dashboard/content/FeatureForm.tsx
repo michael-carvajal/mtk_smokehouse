@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/componen
 import { Input } from '~/components/ui/input'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '~/utils/api'
+import { Textarea } from '~/components/ui/textarea'
 
 function FeatureForm() {
     // Fetching the data using React Query
@@ -36,8 +37,8 @@ function FeatureForm() {
         console.log('Saved', { featureOneTitle, featureOneBody, featureOneLink });
     };
 
-    const handleLinkChange = (e) => {
-        setFeatureOneLink(e.target.value);
+    const handleInputChange = (e, setInputValue) => {
+        setInputValue(e.target.value);
     };
 
     if (isLoading) {
@@ -53,11 +54,11 @@ function FeatureForm() {
                 <div className='flex flex-col flex-1 gap-7 max-w-72'>
                     <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Image</div>
                     <h4>{featureOneTitle}</h4>
-                    <div className='text-xs font-semibold text-slate-400 '>{featureOneBody}</div>
+                    <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                     <div className="w-full flex gap-8 relative">
                         {isEditing ? (
                             <Button variant='ghost' className='text-slate-600 w-full relative'>
-                                <Input value={featureOneLink} onChange={handleLinkChange} />
+                                <Input value={featureOneLink} onChange={(e) => handleInputChange(e, setFeatureOneLink)} />
                             </Button>
                         ) : (
                             <a href='#'>
