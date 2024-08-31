@@ -1,3 +1,5 @@
+import { getHomePage } from "~/server/routes/homePage";
+
 // src/utils/api.ts
 export const api = {
   getLatestProduct: async () => {
@@ -7,6 +9,11 @@ export const api = {
   },
   getAllProducts: async () => {
     const response = await fetch("/api/products");
+    if (!response.ok) throw new Error("Failed to fetch all products");
+    return response.json();
+  },
+  getHomePage: async () => {
+    const response = await fetch("/api/homePage");
     if (!response.ok) throw new Error("Failed to fetch all products");
     return response.json();
   },
