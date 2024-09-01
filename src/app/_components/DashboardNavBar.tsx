@@ -1,5 +1,3 @@
-'use client'
-import React from 'react'
 import { CircleUser, Menu, Package2, Search } from "lucide-react"
 import {
     DropdownMenu,
@@ -13,13 +11,11 @@ import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet"
 import Link from 'next/link'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
-import { usePathname } from 'next/navigation'
 import DashboardNavLinks from './DashboardNavLinks'
 
 function DashboardNavBar() {
-    const pathname = usePathname()
     return (
-        <header className={`sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 ${!pathname.startsWith("/dashboard") && "hidden"} w-full`}>
+        <header className={`sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 w-full`}>
             <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                 <Link
                     href="#"
@@ -27,7 +23,7 @@ function DashboardNavBar() {
                 >
                     <Package2 className="h-6 w-6" />
                 </Link>
-                <DashboardNavLinks pathname={pathname}/>
+                <DashboardNavLinks />
             </nav>
             <Sheet>
                 <SheetTrigger asChild>
@@ -49,7 +45,7 @@ function DashboardNavBar() {
                             <Package2 className="h-6 w-6" />
                             <span className="sr-only">Mt Kisco Smokehouse</span>
                         </Link>
-                        <DashboardNavLinks pathname={pathname} />
+                        <DashboardNavLinks />
                     </nav>
                 </SheetContent>
             </Sheet>
