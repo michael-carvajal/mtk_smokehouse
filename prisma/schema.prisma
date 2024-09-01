@@ -116,12 +116,18 @@ model Product {
   images      ProductImage[]
 }
 
-model ContactUs {
+model ContactPage {
   id           Int      @id @default(autoincrement())
   address      String?
   phone        String?
   email        String?
-  openingHours String?
+  Monday String?
+  Tuesday String?
+  Wednesday String?
+  Thursday String?
+  Friday String?
+  Saturday String?
+  Sunday String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
