@@ -7,11 +7,11 @@ async function main() {
   // Hash the password
   const hashedPassword = await bcrypt.hash("password", 10);
 
-  await prisma.product.deleteMany(); // Deletes all users
-  await prisma.blogPost.deleteMany(); // Deletes all users
-  await prisma.homePage.deleteMany(); // Deletes all users
-  await prisma.user.deleteMany(); // Deletes all users
-  
+  await prisma.product.deleteMany();
+  await prisma.blogPost.deleteMany();
+  await prisma.homePage.deleteMany();
+  await prisma.contactPage.deleteMany();
+  await prisma.user.deleteMany();
 
   // Create two admin users
   const user1 = await prisma.user.create({
@@ -92,13 +92,28 @@ async function main() {
   const HomePage = await prisma.homePage.create({
     data: {
       featureOneTitle: "SMOKEHOUSE GOLD LABEL",
-      featureOneBody: "Our Gold Label is what made MT. Kisco Smokehouse what it is today. With its rich, buttery texture and sweet lacing of fruit-wood smoke, it accounts for most of our smoked salmon sales. Smoked with the perfect blend of apple and cherry woods, our salmon is praised for its delicate smoked flavor and silky texture. Our salmon comes from the best aquaculture farms located in the the icy Northern Atlantic off the coast of Scotland. We receive daily deliveries of fresh Atlantic salmon flown in directly from the farms fresh, never frozen, giving it an amazingly silky texture, and rich, deep orange color.",
+      featureOneBody:
+        "Our Gold Label is what made MT. Kisco Smokehouse what it is today. With its rich, buttery texture and sweet lacing of fruit-wood smoke, it accounts for most of our smoked salmon sales. Smoked with the perfect blend of apple and cherry woods, our salmon is praised for its delicate smoked flavor and silky texture. Our salmon comes from the best aquaculture farms located in the the icy Northern Atlantic off the coast of Scotland. We receive daily deliveries of fresh Atlantic salmon flown in directly from the farms fresh, never frozen, giving it an amazingly silky texture, and rich, deep orange color.",
       featureOneLink: "SHOP FOR GOLD LABEL SMOKED SALMON",
       featureOneImageLink: "/link to image",
       featureTwoTitle: "SMOKEHOUSE SMOKED SALMON LOIN",
-      featureTwoBody: "As one of the most coveted cuts of smoked salmon, this center cut is the filet mignon of salmon. The salmon loin is what the Russian Czars were served during times of great celebration earning it the name ‘czar cut salmon’. The loin is one of the meatier cuts of salmon: uniform in thickness, flavorful, and with a succulent texture. For an elegant, understated presentation, place the salmon loin on a flat platter, slice it into half-inch medallions and serve with a squeeze of lemon and garnish.",
+      featureTwoBody:
+        "As one of the most coveted cuts of smoked salmon, this center cut is the filet mignon of salmon. The salmon loin is what the Russian Czars were served during times of great celebration earning it the name ‘czar cut salmon’. The loin is one of the meatier cuts of salmon: uniform in thickness, flavorful, and with a succulent texture. For an elegant, understated presentation, place the salmon loin on a flat platter, slice it into half-inch medallions and serve with a squeeze of lemon and garnish.",
       featureTwoLink: "SHOP FOR SMOKED SALMON LOIN",
       featureTwoImageLink: "/link to image",
+    },
+  });
+  const ContactPage = await prisma.contactPage.create({
+    data: {
+      address: "520 Lexington Ave, Mt Kisco, NY 10549",
+      phone: "(914)-244-0702",
+      Monday: "9:00 AM - 4:00 PM",
+      Tuesday: "9:00 AM - 4:00 PM",
+      Wednesday: "9:00 AM - 4:00 PM",
+      Thursday: "9:00 AM - 4:00 PM",
+      Friday: "9:00 AM - 4:00 PM",
+      Saturday: "9:00 AM - 4:00 PM",
+      Sunday: "9:00 AM - 12:00 PM",
     },
   });
 
@@ -111,7 +126,8 @@ async function main() {
     product2,
     product3,
     product4,
-    HomePage
+    HomePage,
+    ContactPage
   });
 }
 

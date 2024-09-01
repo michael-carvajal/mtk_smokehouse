@@ -1,7 +1,9 @@
+'use client'
 import Link from 'next/link';
-
-function DashboardNavLinks({ pathname }) {
+import { usePathname } from 'next/navigation';
+function DashboardNavLinks() {
     const links = ["Content", "Orders", "Products", "Customers", "Home"];
+    const pathname = usePathname()
     return (
         <>
             {links.map(link => {

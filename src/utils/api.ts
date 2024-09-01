@@ -28,7 +28,7 @@ export const api = {
   },
   getHomePage: async () => {
     const response = await fetch("/api/homePage");
-    if (!response.ok) throw new Error("Failed to fetch all products");
+    if (!response.ok) throw new Error("Failed to fetch home page");
     return response.json();
   },
   updateHomePage: async (body) => {
@@ -38,6 +38,12 @@ export const api = {
       body : JSON.stringify({...body})
     });
     if (!response.ok) throw new Error("Failed to update home page");
+    return response.json();
+  },
+  
+  getContactPage: async () => {
+    const response = await fetch("/api/contactPage");
+    if (!response.ok) throw new Error("Failed to fetch contact page");
     return response.json();
   },
 };
