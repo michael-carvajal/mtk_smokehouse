@@ -53,6 +53,7 @@ function ProductsList() {
                             <TableCell className="hidden md:table-cell">
                                 {product.price}
                             </TableCell>
+                            <TableCell />
                             {/* <TableCell>
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
