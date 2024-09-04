@@ -1,18 +1,35 @@
+'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import React from 'react'
 
 function ContentNavBar() {
+    const links = ["Home Page", "Our Roots", "Contact / Locations"]
+    const pathname = usePathname()
     return (
-        <nav
-            className="grid gap-4 text-sm text-muted-foreground" x-chunk="dashboard-04-chunk-0"
-        >
-            <Link href="#" className="font-semibold text-primary">
-                Home Page
-            </Link>
-            <Link href="#">Our Roots</Link>
-            <Link href="#">Contact / Locations</Link>
+        <nav className='grid gap-4 text-sm text-muted-foreground'>
+            {links.map(link => {
+                const isActive = pathname.split("/").at(-1) === link.toLowerCase();
+                const linkClass = isActive ? 'text-foreground' : 'text-muted-foreground';
+                const href = 
+                link === "Home Page" 
+                  ? `/dashboard/content/homePage` 
+                  : link === "Our Roots" 
+                  ? `/dashboard/content/roots` 
+                  : `/dashboard/content/contact`;
+              
+                return (
+                    <Link 
+                        className={`${linkClass} transition-colors hover:text-foreground`}
+                        href={href} 
+                        key={`link-key-${link}`}
+                    >
+                        {link}
+                    </Link>
+                );
+            })}
         </nav>
-    )
+    );
 }
 
 export default ContentNavBar
