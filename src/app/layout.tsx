@@ -2,9 +2,8 @@ import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import Navbar from './_components/Navbar';
 import Providers from './providers'
-import DashboardNavBar from "./_components/DashboardNavBar";
+import RenderNavBar from "./_components/RenderNavBar";
 export const metadata: Metadata = {
   title: "MT. Kisco Smokehouse",
   description: "Come find your next favorite seafood products",
@@ -18,8 +17,7 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="flex gap-10 flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen">
         <Providers>
-          <Navbar />
-          <DashboardNavBar />
+         <RenderNavBar />
           {children}
         </Providers>
         <footer className="py-6 md:px-8 md:py-0">
