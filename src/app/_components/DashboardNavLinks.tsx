@@ -9,7 +9,13 @@ function DashboardNavLinks() {
             {links.map(link => {
                 const isActive = pathname.split("/").at(-1) === link.toLowerCase();
                 const linkClass = isActive ? 'text-foreground' : 'text-muted-foreground';
-                const href = link === "Home" ? "/" : `/dashboard/${link.toLowerCase()}`;
+                const href = 
+                link === "Home" 
+                  ? "/" 
+                  : link === "Content" 
+                  ? `/dashboard/${link.toLowerCase()}/homePage` 
+                  : `/dashboard/${link.toLowerCase()}`;
+              
                 return (
                     <Link 
                         className={`${linkClass} transition-colors hover:text-foreground`}
