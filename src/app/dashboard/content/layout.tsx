@@ -1,8 +1,6 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import Link from "next/link";
-import FeatureForm from "./FeatureForm";
 import ContentNavBar from "./ContentNavBar";
 
 export const metadata: Metadata = {

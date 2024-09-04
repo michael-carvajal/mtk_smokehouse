@@ -13,7 +13,7 @@ function DashboardContact() {
         queryFn: () => api.getContactPage(),
     });
     if (isLoading) {
-        return <div>Loading....</div>;
+        return <div className='text-slate-800'>Loading....</div>;
     }
     console.log('contact page in dashboard =====>', contactPage);
     
@@ -28,37 +28,37 @@ function DashboardContact() {
                     </Image>
                     {/* TODO - add links for google and apple maps direction */}
                     <Link target="_blank" href="https://www.google.com/maps/dir//520+Lexington+Ave,+Mt+Kisco,+NY+10549" className="text-center">
-                        <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>520 Lexington Ave, Mt Kisco, NY 10549</Button>
+                        <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>{contactPage.address}</Button>
                     </Link>
-                    <div className="text-center font-thin">Phone: <a type="" href="tel:+19142440702">(914)-244-0702</a></div>
+                    <div className="text-center font-thin">Phone: <a type="" href={`tel:+1${contactPage.phone}`}>{contactPage.phone}</a></div>
                     <div className="grid gap-4">
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Monday</div>
-                            <div className="text-muted-foreground">9:00 AM - 4:00 PM</div>
+                            <div className="text-muted-foreground">{contactPage.Monday}</div>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Tuesday</div>
-                            <div className="text-muted-foreground">9:00 AM - 4:00 PM</div>
+                            <div className="text-muted-foreground">{contactPage.Tuesday}</div>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Wednesday</div>
-                            <div className="text-muted-foreground">9:00 AM - 4:00 PM</div>
+                            <div className="text-muted-foreground">{contactPage.Wednesday}</div>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Thursday</div>
-                            <div className="text-muted-foreground">9:00 AM - 4:00 PM</div>
+                            <div className="text-muted-foreground">{contactPage.Thursday}</div>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Friday</div>
-                            <div className="text-muted-foreground">9:00 AM - 4:00 PM</div>
+                            <div className="text-muted-foreground">{contactPage.Friday}</div>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Saturday</div>
-                            <div className="text-muted-foreground">9:00 AM - 4:00 PM</div>
+                            <div className="text-muted-foreground">{contactPage.Saturday}</div>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Sunday</div>
-                            <div className="text-muted-foreground">9:00 AM - 12:00 PM</div>
+                            <div className="text-muted-foreground">{contactPage.Sunday}</div>
                         </div>
                     </div>
                 </div>

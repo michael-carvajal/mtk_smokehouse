@@ -2,17 +2,32 @@ import { db } from "../db";
 
 
 export const getContactPage = async () => {
-    const contactPage = await db.contactPage.findFirst();
-    return contactPage;
+  const contactPage = await db.contactPage.findFirst({
+    orderBy: {
+      createdAt: 'desc', // Assumes you have a createdAt field to order by
+    },
+  });    return contactPage;
   };
   
-// export const updateHomePage = async (body) => {
-//     const homePage = await db.homePage.update({
-//       where : {
-//         id : 1
-//       },
-//       data : {...body}
-//     });
-//     return homePage;
-//   };
+export const updateContactPage = async (body) => {
+  const contactPage = await db.contactPage.findFirst({
+    orderBy: {
+      createdAt: 'desc', // Assumes you have a createdAt field to order by
+    },
+  });
+
+  if (!contactPage) {
+    throw new Error('No home page found');
+  }
+
+  // Update the fetched home page with the provided data
+  const updatedContactPage = await db.contactPage.update({
+    where: { id: contactPage.id },
+    data: {
+      ...body,
+    },
+  });
+
+    return updatedContactPage;
+  };
   
