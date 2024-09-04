@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import Providers from './providers'
 import RenderNavBar from "./_components/RenderNavBar";
+
 export const metadata: Metadata = {
   title: "MT. Kisco Smokehouse",
   description: "Come find your next favorite seafood products",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className="flex gap-10 flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen">
         <Providers>
          <RenderNavBar />
+
           {children}
         </Providers>
         <footer className="py-6 md:px-8 md:py-0">
