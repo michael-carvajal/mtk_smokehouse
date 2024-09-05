@@ -103,7 +103,7 @@ function FeatureForm() {
                     <Button onClick={() => {
                         mutationFeatureOne.mutate({ featureOneTitle, featureOneBody, featureOneLink, featureOneImageLink })
                     }}>Save</Button>
-                    {mutationFeatureOne.error && <div className='text-slate-900'>{mutationFeatureOne.error.message}</div>}
+                    {mutationFeatureOne.isError && <div className='text-slate-900 ml-12'>Successfully updated feature</div>}
                 </CardFooter>
             </Card>
             <Card x-chunk="dashboard-04-chunk-1">
@@ -112,7 +112,7 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72'>
-                    <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
+                        <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
                             isEditing ? <UploadImage setFeatureImageLink={setFeatureTwoImageLink} /> :
                                 <Image alt='featured one of salmon' src={featureTwoImageLink} width={'280'} height={'240'} className='rounded-lg' loading='lazy' />}</div>
                         <h4>{isEditing ? <Input value={featureTwoTitle} onChange={(e) => handleInputChange(e, setFeatureTwoTitle)} /> : <>{featureTwoTitle}</>}</h4>
@@ -132,10 +132,10 @@ function FeatureForm() {
                     </div>
                 </CardContent>
                 <CardFooter className="border-t px-6 py-4">
-                    <Button onClick={() => {
+                    <Button disabled={mutationFeatureTwo.isPending} onClick={() => {
                         mutationFeatureTwo.mutate({ featureTwoTitle, featureTwoBody, featureTwoLink, featureTwoImageLink })
                     }}>Save</Button>
-                    {mutationFeatureTwo.error && <div className='text-slate-900'>{mutationFeatureTwo.error.message}</div>}
+                    {mutationFeatureTwo.isError && <div className='text-slate-900 ml-12'>Successfully updated feature</div>}
                 </CardFooter>
             </Card>
         </>
