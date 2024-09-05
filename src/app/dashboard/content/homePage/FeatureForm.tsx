@@ -9,6 +9,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { api } from '~/utils/api'
 import { Textarea } from '~/components/ui/textarea'
 import UploadImage from './UploadImage'
+import Image from 'next/image'
 
 function FeatureForm() {
     // Fetching the data using React Query
@@ -37,11 +38,11 @@ function FeatureForm() {
             setFeatureOneTitle(homePage.featureOneTitle || "Default Title");
             setFeatureOneBody(homePage.featureOneBody || "Default Body");
             setFeatureOneLink(homePage.featureOneLink || "Default Link");
-            setFeatureOneImageLink(homePage.featureOneLink || "Default Link");
+            setFeatureOneImageLink(homePage.featureOneImageLink || "Default Link");
             setFeatureTwoTitle(homePage.featureTwoTitle || "Default Title");
             setFeatureTwoBody(homePage.featureTwoBody || "Default Body");
             setFeatureTwoLink(homePage.featureTwoLink || "Default Link");
-            setFeatureTwoImageLink(homePage.featureTwoLink || "Default Link");
+            setFeatureTwoImageLink(homePage.featureTwoImageLink || "Default Link");
         }
     }, [homePage]);
 
@@ -71,9 +72,9 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72'>
-                        <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>{
-                        isEditing ? <UploadImage /> : 
-                        "Image"}</div>
+                        <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
+                            isEditing ? <UploadImage /> :
+                                <Image alt='featured one of salmon' src={featureOneImageLink} width={'280'} height={'240'} className='rounded-lg' loading='lazy'/>}</div>
                         <h4>{isEditing ? <Input value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
                         <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                         <div className="w-full flex gap-8 relative">
