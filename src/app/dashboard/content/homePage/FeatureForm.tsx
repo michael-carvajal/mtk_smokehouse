@@ -73,8 +73,8 @@ function FeatureForm() {
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72'>
                         <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
-                            isEditing ? <UploadImage /> :
-                                <Image alt='featured one of salmon' src={featureOneImageLink} width={'280'} height={'240'} className='rounded-lg' loading='lazy'/>}</div>
+                            isEditing ? <UploadImage setFeatureImageLink={setFeatureOneImageLink} /> :
+                                <Image alt='featured one of salmon' src={featureOneImageLink} width={'280'} height={'240'} className='rounded-lg' loading='lazy' />}</div>
                         <h4>{isEditing ? <Input value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
                         <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                         <div className="w-full flex gap-8 relative">
@@ -93,7 +93,7 @@ function FeatureForm() {
                 </CardContent>
                 <CardFooter className="border-t px-6 py-4">
                     <Button onClick={() => {
-                        mutation.mutate({ featureOneTitle, featureOneBody, featureOneLink })
+                        mutation.mutate({ featureOneTitle, featureOneBody, featureOneLink, featureOneImageLink })
                     }}>Save</Button>
                     {mutation.error && <div className='text-slate-900'>{mutation.error.message}</div>}
                 </CardFooter>
@@ -104,7 +104,9 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72'>
-                        <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Image</div>
+                    <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
+                            isEditing ? <UploadImage setFeatureImageLink={setFeatureTwoImageLink} /> :
+                                <Image alt='featured one of salmon' src={featureTwoImageLink} width={'280'} height={'240'} className='rounded-lg' loading='lazy' />}</div>
                         <h4>{isEditing ? <Input value={featureTwoTitle} onChange={(e) => handleInputChange(e, setFeatureTwoTitle)} /> : <>{featureTwoTitle}</>}</h4>
                         <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureTwoBody} onChange={(e) => handleInputChange(e, setFeatureTwoBody)} /> : <>{featureTwoBody}</>}</div>
                         <div className="w-full flex gap-8 relative">
@@ -123,7 +125,7 @@ function FeatureForm() {
                 </CardContent>
                 <CardFooter className="border-t px-6 py-4">
                     <Button onClick={() => {
-                        mutation.mutate({ featureTwoTitle, featureTwoBody, featureTwoLink })
+                        mutation.mutate({ featureTwoTitle, featureTwoBody, featureTwoLink, featureTwoImageLink })
                     }}>Save</Button>
                     {mutation.error && <div className='text-slate-900'>{mutation.error.message}</div>}
                 </CardFooter>
