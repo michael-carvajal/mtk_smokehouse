@@ -47,11 +47,19 @@ function FeatureForm() {
     }, [homePage]);
 
 
-    const mutation = useMutation({
+    const mutationFeatureOne = useMutation({
         mutationFn: api.updateHomePage,
         onSuccess: () => {
             // Invalidate and refetch
-            queryClient.invalidateQueries({ queryKey: ['homePage'] })
+            queryClient.invalidateQueries({ queryKey: ['homePageFeatureOne'] })
+        },
+    })
+
+    const mutationFeatureTwo = useMutation({
+        mutationFn: api.updateHomePage,
+        onSuccess: () => {
+            // Invalidate and refetch
+            queryClient.invalidateQueries({ queryKey: ['homePageFeatureTwo'] })
         },
     })
 
@@ -93,9 +101,9 @@ function FeatureForm() {
                 </CardContent>
                 <CardFooter className="border-t px-6 py-4">
                     <Button onClick={() => {
-                        mutation.mutate({ featureOneTitle, featureOneBody, featureOneLink, featureOneImageLink })
+                        mutationFeatureOne.mutate({ featureOneTitle, featureOneBody, featureOneLink, featureOneImageLink })
                     }}>Save</Button>
-                    {mutation.error && <div className='text-slate-900'>{mutation.error.message}</div>}
+                    {mutationFeatureOne.error && <div className='text-slate-900'>{mutationFeatureOne.error.message}</div>}
                 </CardFooter>
             </Card>
             <Card x-chunk="dashboard-04-chunk-1">
@@ -125,9 +133,9 @@ function FeatureForm() {
                 </CardContent>
                 <CardFooter className="border-t px-6 py-4">
                     <Button onClick={() => {
-                        mutation.mutate({ featureTwoTitle, featureTwoBody, featureTwoLink, featureTwoImageLink })
+                        mutationFeatureTwo.mutate({ featureTwoTitle, featureTwoBody, featureTwoLink, featureTwoImageLink })
                     }}>Save</Button>
-                    {mutation.error && <div className='text-slate-900'>{mutation.error.message}</div>}
+                    {mutationFeatureTwo.error && <div className='text-slate-900'>{mutationFeatureTwo.error.message}</div>}
                 </CardFooter>
             </Card>
         </>
