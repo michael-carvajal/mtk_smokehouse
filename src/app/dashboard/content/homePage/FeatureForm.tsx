@@ -8,6 +8,7 @@ import { Input } from '~/components/ui/input'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { api } from '~/utils/api'
 import { Textarea } from '~/components/ui/textarea'
+import UploadImage from './UploadImage'
 
 function FeatureForm() {
     // Fetching the data using React Query
@@ -70,7 +71,9 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72'>
-                        <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>Image</div>
+                        <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto bg-red-400 w-full'>{
+                        isEditing ? <UploadImage /> : 
+                        "Image"}</div>
                         <h4>{isEditing ? <Input value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
                         <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                         <div className="w-full flex gap-8 relative">
