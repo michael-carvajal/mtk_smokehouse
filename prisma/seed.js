@@ -57,9 +57,10 @@ async function main() {
       price: 29.99,
       countryCode: 1,
       createdBy: { connect: { id: user1.id } },
+      imageLink : "https://utfs.io/f/70d86930-457e-4a6a-8957-421c21f683a0-xnxmog.jpg"
     },
   });
-
+  
   const product2 = await prisma.product.create({
     data: {
       name: "Smoked Trout",
@@ -67,6 +68,7 @@ async function main() {
       price: 24.99,
       countryCode: 1,
       createdBy: { connect: { id: user1.id } },
+      imageLink : "https://utfs.io/f/70d86930-457e-4a6a-8957-421c21f683a0-xnxmog.jpg"
     },
   });
 
