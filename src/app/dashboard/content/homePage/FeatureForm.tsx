@@ -21,10 +21,12 @@ function FeatureForm() {
     const [featureOneTitle, setFeatureOneTitle] = useState("");
     const [featureOneBody, setFeatureOneBody] = useState("");
     const [featureOneLink, setFeatureOneLink] = useState("");
+    const [featureOneImageLink, setFeatureOneImageLink] = useState("");
     // State to hold the feature 2 values
     const [featureTwoTitle, setFeatureTwoTitle] = useState("");
     const [featureTwoBody, setFeatureTwoBody] = useState("");
     const [featureTwoLink, setFeatureTwoLink] = useState("");
+    const [featureTwoImageLink, setFeatureTwoImageLink] = useState("");
 
     const [isEditing, setIsEditing] = useState(false);
 
@@ -34,9 +36,11 @@ function FeatureForm() {
             setFeatureOneTitle(homePage.featureOneTitle || "Default Title");
             setFeatureOneBody(homePage.featureOneBody || "Default Body");
             setFeatureOneLink(homePage.featureOneLink || "Default Link");
+            setFeatureOneImageLink(homePage.featureOneLink || "Default Link");
             setFeatureTwoTitle(homePage.featureTwoTitle || "Default Title");
             setFeatureTwoBody(homePage.featureTwoBody || "Default Body");
             setFeatureTwoLink(homePage.featureTwoLink || "Default Link");
+            setFeatureTwoImageLink(homePage.featureTwoLink || "Default Link");
         }
     }, [homePage]);
 

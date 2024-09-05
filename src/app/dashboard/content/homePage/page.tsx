@@ -1,5 +1,5 @@
 import React from 'react'
-import FeatureForm from '../FeatureForm'
+import FeatureForm from './FeatureForm'
 
 function ContentHomePage() {
   return (
