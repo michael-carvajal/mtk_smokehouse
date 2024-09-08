@@ -35,13 +35,14 @@ function ProductsList() {
                         <TableRow key={product.id}>
                             <TableCell className="hidden sm:table-cell">
                                 <Link href={`/products/${product.id}`} >
-                                    <Image
-                                        alt="Product image"
-                                        className="aspect-square rounded-md object-fit"
-                                        height={124}
-                                        src="/mtk_photos/salmon1.jpg"
-                                        width={124}
-                                    />
+                                    <div className="relative aspect-[4/3] w-full gitmd:h-[150px]">
+                                        <Image
+                                            alt="Product image"
+                                            fill
+                                            className="object-cover rounded-lg"
+                                            src={product.imageLink || ""}
+                                        />
+                                    </div>
                                 </Link>
                             </TableCell>
                             <TableCell className="font-medium">
