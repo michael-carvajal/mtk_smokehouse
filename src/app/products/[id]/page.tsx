@@ -30,7 +30,7 @@ console.log(productId);
       <CardContent className="p-0">
         <div className="relative aspect-[4/3] w-full">
           <Image
-            src={"/"}
+            src={product.imageLink}
             alt={"product image"}
             fill
             className="object-cover rounded-t-lg"
