@@ -1,7 +1,10 @@
 'use client'
 import { useQuery } from '@tanstack/react-query';
 import { usePathname } from 'next/navigation';
+import Image  from 'next/image';
 import React from 'react';
+import { Button } from '~/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { api } from '~/utils/api';
 
 function ProductDetails() {
@@ -20,15 +23,28 @@ console.log(productId);
 
     return (
         <div className='text-xl text-slate-800'>
-            {product ? (
-                <>
-                    <h1>{product.name}</h1>
-                    <p>Created by: {product.createdBy}</p>
-                    {/* Add more product details as needed */}
-                </>
-            ) : (
-                <p className='bg-slate-900'>No product found for ID {productId}</p>
-            )}
+            <Card className="md:w-[400px] max-w-sm mx-auto">
+      <CardHeader>
+        <CardTitle className="text-lg">{product.name}</CardTitle>
+      </CardHeader>
+      <CardContent className="p-0">
+        <div className="relative aspect-[4/3] w-full">
+          <Image
+            src={"/"}
+            alt={"product image"}
+            fill
+            className="object-cover rounded-t-lg"
+          />
+        </div>
+        <div className="p-4">
+          <p className="text-2xl font-bold mb-2">{product.price}</p>
+          <p className="text-sm text-gray-600">{product.description}</p>
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Add to Cart</Button>
+      </CardFooter>
+    </Card>
         </div>
     );
 }
