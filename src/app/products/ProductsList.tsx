@@ -35,7 +35,7 @@ function ProductsList() {
                         <TableRow key={product.id}>
                             <TableCell className="hidden sm:table-cell">
                                 <Link href={`/products/${product.id}`} >
-                                    <div className="relative aspect-[4/3] w-full gitmd:h-[150px]">
+                                    <div className="relative aspect-[4/3] w-full md:h-[150px]">
                                         <Image
                                             alt="Product image"
                                             fill
