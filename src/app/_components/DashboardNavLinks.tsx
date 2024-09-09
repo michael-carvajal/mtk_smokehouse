@@ -7,7 +7,7 @@ function DashboardNavLinks() {
     return (
         <>
             {links.map(link => {
-                const isActive = pathname.split("/").at(-1) === link.toLowerCase();
+                const isActive = pathname.split("/").at(-1) === link.toLowerCase() || (pathname.endsWith("homePage") && link === "Content");
                 const linkClass = isActive ? 'text-foreground' : 'text-muted-foreground';
                 const href = 
                 link === "Home" 
