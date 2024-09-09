@@ -83,7 +83,11 @@ function FeatureForm() {
                         <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
                         <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
                             isEditing ? <UploadImage setFeatureImageLink={setFeatureOneImageLink} /> :
-                                <Image alt='featured one of salmon' src={featureOneImageLink} width={'280'} height={'240'} className='rounded-lg' loading='lazy' />}</div>
+
+                                <div className="relative aspect-[4/3] w-full md:h-[190px]">
+                                    <Image alt='featured one of salmon' src={featureOneImageLink} fill
+                                        className="object-cover rounded-lg" loading='lazy' />
+                                </div>}</div>
                         <h4>{isEditing ? <Input value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
                         <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                         <div className="w-full flex gap-8">
@@ -112,11 +116,14 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72 relative'>
-                    <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
+                        <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
 
                         <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
                             isEditing ? <UploadImage setFeatureImageLink={setFeatureTwoImageLink} /> :
-                                <Image alt='featured one of salmon' src={featureTwoImageLink} width={'280'} height={'240'} className='rounded-lg' loading='lazy' />}</div>
+                            <div className="relative aspect-[4/3] w-full md:h-[190px]">
+                                    <Image alt='featured one of salmon' src={featureTwoImageLink} fill
+                                            className="object-cover rounded-lg" loading='lazy' />
+                                </div>}</div>
                         <h4>{isEditing ? <Input value={featureTwoTitle} onChange={(e) => handleInputChange(e, setFeatureTwoTitle)} /> : <>{featureTwoTitle}</>}</h4>
                         <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureTwoBody} onChange={(e) => handleInputChange(e, setFeatureTwoBody)} /> : <>{featureTwoBody}</>}</div>
                         <div className="w-full flex gap-8 relative">

@@ -9,7 +9,7 @@ function ContentNavBar() {
     return (
         <nav className='grid gap-4 text-sm text-muted-foreground'>
             {links.map(link => {
-                const isActive = pathname.split("/").at(-1) === link.toLowerCase();
+                const isActive = pathname.split("/").at(-1) === link.toLowerCase() || (pathname.endsWith("homePage") && link === "Home Page") || (pathname.endsWith("contact") && link === "Contact / Locations") || (pathname.endsWith("roots") && link === "Our Roots") ;
                 const linkClass = isActive ? 'text-foreground' : 'text-muted-foreground';
                 const href = 
                 link === "Home Page" 

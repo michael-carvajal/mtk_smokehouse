@@ -1,4 +1,4 @@
-import { CircleUser, Menu, Package2, Search } from "lucide-react"
+import { CircleUser, Menu, Package2 } from "lucide-react"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,7 +10,6 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet"
 import Link from 'next/link'
 import { Button } from '~/components/ui/button'
-import { Input } from '~/components/ui/input'
 import DashboardNavLinks from './DashboardNavLinks'
 
 function DashboardNavBar() {
