@@ -105,6 +105,7 @@ model Product {
   id          Int            @id @default(autoincrement())
   name    String
   description String?
+  imageLink    String?
   price       Float?
   countryCode Int?
   createdBy   User   @relation(fields: [createdById], references: [id])
