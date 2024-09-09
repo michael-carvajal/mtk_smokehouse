@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Navbar = () => {
 
   return (
-    <nav>
+    <nav className='mb-10'>
       <Link href="/" className='flex justify-center items-center h-32 w-32 my-0 mt-4 rounded mx-auto '>
         <div className="relative h-full w-full">
           <Image alt='company logo' src='/mtk_photos/logo.jpg' fill

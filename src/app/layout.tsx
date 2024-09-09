@@ -29,7 +29,7 @@ export default function RootLayout({
          */
         routerConfig={extractRouterConfig(ourFileRouter)}
       />
-      <body className="flex gap-10 flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen">
+      <body className="flex flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen">
         <Providers>
           <RenderNavBar />
 
