@@ -18,9 +18,11 @@ const Navbar = () => {
             Smoked Salmon
           </Button>
         </Link>
-        <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
-          Our Roots
-        </Button>
+        <Link href='/roots'>
+          <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+            Our Roots
+          </Button>
+        </Link>
         <Link href="/contact">
           <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
             Contact / Locations
