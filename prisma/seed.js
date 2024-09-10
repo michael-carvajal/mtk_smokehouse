@@ -120,6 +120,13 @@ async function main() {
       Sunday: "9:00 AM - 12:00 PM",
     },
   });
+  const RootsPage = await prisma.ourRoot.create({
+    data: {
+      title : "Our Roots",
+      content : "Catsmo's founder, Robert Simon, has always been passionate about fishing. The idea of smoking his catch began when he would return home from fishing trips with too much fresh fish than his family could eat themselves. Over time, Robert perfected his smoking techniques and recipes and began sharing with chef friends in NYC. In time, Robert's little garage smoking operation grew but he never changed his fundamental principles of not compromising when it came to the quality of fish he chose nor his methods.",
+      imageUrl : "https://utfs.io/f/34ac9c45-b876-4101-9d77-197cded3531b-43nwx0.jpg",
+    },
+  });
 
   console.log({
     user1,
@@ -131,7 +138,8 @@ async function main() {
     product3,
     product4,
     HomePage,
-    ContactPage
+    ContactPage,
+    RootsPage
   });
 }
 
