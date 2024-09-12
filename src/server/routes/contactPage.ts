@@ -17,7 +17,7 @@ export const updateContactPage = async (body) => {
   });
 
   if (!contactPage) {
-    throw new Error('No home page found');
+    throw new Error('No contact page found');
   }
 
   // Update the fetched home page with the provided data
