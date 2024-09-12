@@ -12,14 +12,8 @@ import { Checkbox } from "~/components/ui/checkbox"
 
 import { Input } from "~/components/ui/input"
 import { Button } from "~/components/ui/button"
-import { getServerSession } from "next-auth"
-import { redirect } from "next/navigation"
 
-export default async function Dashboard() {
-    const session = await getServerSession();
-    if (!session || !session.user) {
-        redirect("/api/auth/signin")
-    }
+export default function Dashboard() {
     return (
         <div className="flex min-h-screen w-full flex-col">
             <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
