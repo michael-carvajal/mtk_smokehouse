@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/componen
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { api } from '~/utils/api'
 import { Edit } from 'lucide-react'
+import { Input } from '~/components/ui/input'
 
 function DashboardContact() {
     const [isEditing, setIsEditing] = useState(false);
@@ -31,6 +32,9 @@ function DashboardContact() {
             });
         }
     }, [contactPage]);
+    const handleOnChange = (e, attr) => {
+        setPageState({ ...pageState, [attr]: e.target.value })
+    }
     const mutationContactPage = useMutation({
         mutationFn: api.updateContactPage,
         onSuccess: () => {
@@ -42,7 +46,7 @@ function DashboardContact() {
         return <div className='text-slate-800'>Loading....</div>;
     }
     return (
-        <Card className="w-[350px] relative">
+        <Card className="w-[350px] relative mx-auto">
             <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -left-20 cursor-pointer text-slate-900" />
 
             <CardHeader>
@@ -60,32 +64,26 @@ function DashboardContact() {
                     <div className="grid gap-4">
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Monday</div>
-                            <div className="text-muted-foreground">{pageState.Monday}</div>
+                            <div className="text-muted-foreground">{isEditing ? (<Input value={pageState.Monday} onChange={(e) => handleOnChange(e, "Monday")} />) : (pageState.Monday)}</div>
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Tuesday</div>
-                            <div className="text-muted-foreground">{pageState.Tuesday}</div>
-                        </div>
+                            <div className="text-muted-foreground">{isEditing ? (<Input value={pageState.Tuesday} onChange={(e) => handleOnChange(e, "Tuesday")} />) : (pageState.Tuesday)}</div>                        </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Wednesday</div>
-                            <div className="text-muted-foreground">{pageState.Wednesday}</div>
-                        </div>
+                            <div className="text-muted-foreground">{isEditing ? (<Input value={pageState.Wednesday} onChange={(e) => handleOnChange(e, "Wednesday")} />) : (pageState.Wednesday)}</div>                        </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Thursday</div>
-                            <div className="text-muted-foreground">{pageState.Thursday}</div>
-                        </div>
+                            <div className="text-muted-foreground">{isEditing ? (<Input value={pageState.Thursday} onChange={(e) => handleOnChange(e, "Thursday")} />) : (pageState.Thursday)}</div>                        </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Friday</div>
-                            <div className="text-muted-foreground">{pageState.Friday}</div>
-                        </div>
+                            <div className="text-muted-foreground">{isEditing ? (<Input value={pageState.Friday} onChange={(e) => handleOnChange(e, "Friday")} />) : (pageState.Friday)}</div>                        </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Saturday</div>
-                            <div className="text-muted-foreground">{pageState.Saturday}</div>
-                        </div>
+                            <div className="text-muted-foreground">{isEditing ? (<Input value={pageState.Saturday} onChange={(e) => handleOnChange(e, "Saturday")} />) : (pageState.Saturday)}</div>                        </div>
                         <div className="flex items-center justify-between">
                             <div className="font-medium">Sunday</div>
-                            <div className="text-muted-foreground">{pageState.Sunday}</div>
-                        </div>
+                            <div className="text-muted-foreground">{isEditing ? (<Input value={pageState.Sunday} onChange={(e) => handleOnChange(e, "Sunday")} />) : (pageState.Sunday)}</div>                        </div>
                     </div>
                 </div>
             </CardContent>
