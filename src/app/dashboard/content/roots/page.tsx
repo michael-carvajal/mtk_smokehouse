@@ -1,6 +1,6 @@
 'use client'
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Edit, Upload } from "lucide-react";
+import { Edit } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
@@ -38,6 +38,9 @@ export default function OurRoots() {
   })
   const setFeatureImageLink = (link) => {
     setPageState({ ...pageState, imageUrl: link })
+  }
+  if (isLoading) {
+    return <div className='text-slate-800'>Loading....</div>;
   }
   return (
     <div>

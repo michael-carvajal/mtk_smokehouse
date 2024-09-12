@@ -10,28 +10,31 @@ export default function OurRoots() {
     queryKey: ['rootsPageFetch'],
     queryFn: () => api.getOurRootsPage(),
   });
-
+  if (isLoading) {
+    return <div className='text-slate-800'>Loading....</div>;
+  }
   return (
     <div>
       <Card className="max-w-xl mx-auto relative">
         <CardContent className="p-0">
           <div className="relative aspect-[4/3] w-full md:h-[300px]">
             <Image
-              src={rootsPage.imageUrl}
+              src={rootsPage?.imageUrl}
               alt="Misty forest landscape with evergreen trees"
               fill
+              priority
               className="object-cover rounded-t-lg"
             />
           </div>
         </CardContent>
         <CardHeader>
           <CardTitle className="text-2xl font-extralight text-center mb-4">
-            {rootsPage.title}
+            {rootsPage?.title}
           </CardTitle>
         </CardHeader>
         <CardContent className="text-center px-20 pb-6">
           <p className="text-sm leading-relaxed text-gray-600">
-            {rootsPage.content}
+            {rootsPage?.content}
           </p>
         </CardContent>
       </Card>
