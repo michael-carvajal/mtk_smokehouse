@@ -4,9 +4,10 @@ import { redirect } from "next/navigation";
 import { authOptions } from "~/server/auth";
 
 export default async function DashboardLayout({ children }) {
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
+  const session = await getServerSession();
+  console.log('session in dashboard ======>', session);
+  
+  if (!session || !session.user) {
     redirect("/api/auth/signin");
   }
 

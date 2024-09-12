@@ -44,29 +44,48 @@ const Navbar = () => {
       </nav>
       <div className="ablsolute top-0 left-20">
         <Sheet >
-                  <SheetTrigger asChild>
-                      <Button
-                          variant="secondary"
-                          size="icon"
-                          className="shrink-0 md:hidden absolute top-14 left-14"
-                      >
-                          <Menu className="h-5 w-5" />
-                          <span className="sr-only">Toggle navigation menu</span>
-                      </Button>
-                  </SheetTrigger>
-                  <SheetContent side="left">
-                      <nav className="grid gap-6 text-lg font-medium">
-                          <Link
-                              href="#"
-                              className="flex items-center gap-2 text-lg font-semibold"
-                          >
-                              <Package2 className="h-6 w-6" />
-                              <span className="sr-only">Mt Kisco Smokehouse</span>
-                          </Link>
-                          <DashboardNavLinks />
-                      </nav>
-                  </SheetContent>
-              </Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="secondary"
+              size="icon"
+              className="shrink-0 md:hidden absolute top-14 left-14"
+            >
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left">
+            <nav className="grid gap-6 text-lg font-medium">
+              <Link
+                href="#"
+                className="flex items-center gap-2 text-lg font-semibold"
+              >
+                <Package2 className="h-6 w-6" />
+                <span className="sr-only">Mt Kisco Smokehouse</span>
+              </Link>
+              <Link href='/products'>
+                <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+                  Smoked Salmon
+                </Button>
+              </Link>
+              <Link href='/roots'>
+                <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+                  Our Roots
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+                  Contact / Locations
+                </Button>
+              </Link>
+              <Link href='/products'>
+                <Button variant='ghost' className='text-slate-600 tracking-wider font-thin'>
+                  Order Online
+                </Button>
+              </Link>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </>
   );
