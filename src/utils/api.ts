@@ -46,4 +46,9 @@ export const api = {
     if (!response.ok) throw new Error("Failed to fetch contact page");
     return response.json();
   },
+  getOurRootsPage: async () => {
+    const response = await fetch("/api/rootsPage");
+    if (!response.ok) throw new Error("Failed to fetch our roots page");
+    return response.json();
+  },
 };
