@@ -4,6 +4,7 @@ import { Edit } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { api } from "~/utils/api";
 
@@ -40,7 +41,17 @@ export default function OurRoots() {
         </div>
       </CardContent>
       <CardHeader>
-        <CardTitle className="text-2xl font-extralight text-center mb-4">{pageState.title}</CardTitle>
+        <CardTitle className="text-2xl font-extralight text-center mb-4">{isEditing ? (
+            <Input
+              value={pageState.title}
+              onChange={(e) =>
+                setPageState({ ...pageState, title: e.target.value })
+              }
+              className="text-center"
+            />
+          ) : (
+            pageState.title
+          )}</CardTitle>
       </CardHeader>
       <CardContent className="text-center px-20 pb-6">
         <p className="text-sm leading-relaxed text-gray-600">
