@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { api } from '~/utils/api'
 import { Edit } from 'lucide-react'
 
@@ -31,7 +31,13 @@ function DashboardContact() {
             });
         }
     }, [contactPage]);
-
+    const mutationContactPage = useMutation({
+        mutationFn: api.updateContactPage,
+        onSuccess: () => {
+            // Invalidate and refetch
+            queryClient.invalidateQueries({ queryKey: ['updateContactPage'] })
+        },
+    })
     if (isLoading) {
         return <div className='text-slate-800'>Loading....</div>;
     }
@@ -85,6 +91,12 @@ function DashboardContact() {
             </CardContent>
             <CardFooter className="flex justify-end">
                 <Link href="/products"><Button>Shop Now</Button></Link>
+            </CardFooter>
+            <CardFooter className="border-t px-6 py-4">
+                <Button onClick={() => {
+                    mutationContactPage.mutate(pageState)
+                }}>Save</Button>
+                {mutationContactPage.isError && <div className='text-slate-900 ml-12'>Successfully updated feature</div>}
             </CardFooter>
         </Card>
     )

@@ -46,6 +46,15 @@ export const api = {
     if (!response.ok) throw new Error("Failed to fetch contact page");
     return response.json();
   },
+  updateContactPage: async (body) => {
+    const response = await fetch(`/api/contactPage`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body }),
+    });
+    if (!response.ok) throw new Error("Failed to update roots page");
+    return response.json();
+  },
   getOurRootsPage: async () => {
     const response = await fetch("/api/rootsPage");
     if (!response.ok) throw new Error("Failed to fetch our roots page");
