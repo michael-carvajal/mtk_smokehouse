@@ -52,11 +52,15 @@ export const authOptions: NextAuthOptions = {
       },
     }),
     async redirect({ url, baseUrl }) {
-      return '/dashboard/content/homePage'
+      return '/dashboard/content'
     },
   },
   adapter: PrismaAdapter(db) as Adapter,
   providers: [
+    DiscordProvider({
+      clientId: env.DISCORD_CLIENT_ID,
+      clientSecret: env.DISCORD_CLIENT_SECRET,
+    }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
