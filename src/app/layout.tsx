@@ -9,15 +9,18 @@ import { extractRouterConfig } from "uploadthing/server";
 
 import { ourFileRouter } from "~/app/api/uploadthing/core"
 import Footer from "./_components/Footer";
+import SessionProvider from "./_components/SessionProvider";
+import { getServerSession } from "next-auth";
 export const metadata: Metadata = {
   title: "MT. Kisco Smokehouse",
   description: "Come find your next favorite seafood products",
   icons: [{ rel: "icon", url: "/mtk_photos/logo.jpg" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const session = await getServerSession();
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <NextSSRPlugin
@@ -30,12 +33,12 @@ export default function RootLayout({
         routerConfig={extractRouterConfig(ourFileRouter)}
       />
       <body className="flex flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen">
-        <Providers>
-          <RenderNavBar />
 
-          {children}
-          <Footer />
-        </Providers>
+          <Providers>
+            <RenderNavBar />
+            {children}
+            <Footer />
+          </Providers>
       </body>
     </html>
   );
