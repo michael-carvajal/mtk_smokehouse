@@ -34,16 +34,30 @@ export const api = {
   updateHomePage: async (body) => {
     const response = await fetch(`/api/homePage`, {
       method: "PATCH",
-      headers : {"Content-Type" : "application/json"},
-      body : JSON.stringify({...body})
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body }),
     });
     if (!response.ok) throw new Error("Failed to update home page");
     return response.json();
   },
-  
+
   getContactPage: async () => {
     const response = await fetch("/api/contactPage");
     if (!response.ok) throw new Error("Failed to fetch contact page");
+    return response.json();
+  },
+  getOurRootsPage: async () => {
+    const response = await fetch("/api/rootsPage");
+    if (!response.ok) throw new Error("Failed to fetch our roots page");
+    return response.json();
+  },
+  updateRootsPage: async (body) => {
+    const response = await fetch(`/api/rootsPage`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body }),
+    });
+    if (!response.ok) throw new Error("Failed to update roots page");
     return response.json();
   },
 };
