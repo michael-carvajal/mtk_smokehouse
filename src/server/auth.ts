@@ -9,7 +9,7 @@ import DiscordProvider from "next-auth/providers/discord";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { env } from "~/env";
 import { db } from "~/server/db";
-import { compare } from 'bcrypt';
+import { compare } from "bcrypt";
 
 export async function verifyPassword(password: string, hashedPassword: string) {
   const isValid = await compare(password, hashedPassword);
@@ -43,16 +43,20 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
+  debug: true,
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    async session({ session, user }) {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+          email: user.email, // Add email to session
+        },
+      };
+    },
     async redirect({ url, baseUrl }) {
-      return '/dashboard/content/homePage'
+      return "/dashboard/content/homePage";
     },
   },
   adapter: PrismaAdapter(db) as Adapter,
@@ -78,19 +82,12 @@ export const authOptions: NextAuthOptions = {
         ) {
           throw new Error("Invalid email or password");
         }
+console.log('signed in user =>', { id: user.id, email: user.email, name: user.name });
 
         return { id: user.id, email: user.email, name: user.name };
       },
     }),
-    /**
-     * ...add more providers here.
-     *
-     * Most other providers require a bit more work than the Discord provider. For example, the
-     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-     *
-     * @see https://next-auth.js.org/providers/github
-     */
+    // ...add other providers here
   ],
 };
 
