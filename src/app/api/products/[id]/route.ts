@@ -18,8 +18,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get('id');
+  const id = parseInt(req.url.split('/').at(-1)!);
   const updates = await req.json();
 
   if (!id) {

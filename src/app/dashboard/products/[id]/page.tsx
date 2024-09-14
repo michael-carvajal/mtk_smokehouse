@@ -41,7 +41,7 @@ function ProductDetails() {
     }
   }, [product]);
   const mutationProductUpdate = useMutation({
-    mutationFn: api.updateRootsPage,
+    mutationFn: api.updateProduct,
     onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['updateRootsPage'] })
