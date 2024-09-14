@@ -8,6 +8,7 @@ import { api } from '~/utils/api';
 import { Edit } from 'lucide-react';
 import UploadImage from '../../content/homePage/UploadImage';
 import { Input } from '~/components/ui/input';
+import { useRouter } from 'next/navigation';
 
 function CreateProduct() {
   const [pageState, setPageState] = useState({
@@ -17,10 +18,30 @@ function CreateProduct() {
     "price": "",
   });
   const [isCreating, setIsCreating] = useState(false);
+  const router = useRouter()
 
   const setFeatureImageLink = (link) => {
     setPageState({ ...pageState, imageLink: link })
   }
+  const handleProductCreation = async () => {
+    try {
+      const response = await api.createProduct(pageState);
+
+      router.push("/dashboard/products")
+      return response
+    } catch (error) {
+      console.log('cresation error', error);
+      
+    }
+  }
+
+  const mutationProductCreation = useMutation({
+    mutationFn: handleProductCreation,
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['updateRootsPage'] })
+    },
+  })
   return (
 
     <Card className="md:w-[400px] max-w-sm mx-auto relative">
@@ -66,12 +87,12 @@ function CreateProduct() {
       <CardFooter>
         <Button className="w-full">Add to Cart</Button>
       </CardFooter>
-      {/* <CardFooter className="border-t px-6 py-4">
+      <CardFooter className="border-t px-6 py-4">
         <Button onClick={() => {
-          mutationProductUpdate.mutate(pageState)
+          mutationProductCreation.mutate(pageState)
         }}>Save</Button>
-        {mutationProductUpdate.isError && <div className='text-slate-900 ml-12'>Successfully updated feature</div>}
-      </CardFooter> */}
+        {mutationProductCreation.isError && <div className='text-slate-900 ml-12'>Successfully updated feature</div>}
+      </CardFooter>
     </Card>
   );
 }

@@ -10,13 +10,13 @@ export const api = {
     if (!response.ok) throw new Error("Failed to fetch all products");
     return response.json();
   },
-  createProduct: async (name: string, createdBy: string) => {
+  createProduct: async (body) => {
     const response = await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, createdBy }),
+      body: JSON.stringify({...body}),
     });
     if (!response.ok) throw new Error("Failed to create product");
     return response.json();
