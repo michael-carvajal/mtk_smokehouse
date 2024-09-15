@@ -40,7 +40,7 @@ function DashboardProductsList() {
                                             alt="Product image"
                                             fill
                                             className="object-cover rounded-lg"
-                                            src={product.imageLink || ""}
+                                            src={product.imageLink || "/mtk_photos/Image-not-found.webp"}
                                         />
                                     </div>
                                 </Link>

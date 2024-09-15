@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const { name, createdBy } = await req.json();
-  const newProduct = await createProduct(name, createdBy);
+  const body = await req.json();
+  const newProduct = await createProduct(body);
   return NextResponse.json(newProduct);
 }

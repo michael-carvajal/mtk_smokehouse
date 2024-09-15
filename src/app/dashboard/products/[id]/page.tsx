@@ -69,7 +69,7 @@ function ProductDetails() {
       <CardContent className="p-0">
         <div className="relative aspect-[4/3] w-full">
           {isEditing ? <UploadImage setFeatureImageLink={setFeatureImageLink} /> : <Image
-            src={pageState.imageLink}
+            src={pageState.imageLink || '/mtk_photos/Image-not-found.webp'}
             alt={"pageState image"}
             fill
             className="object-cover rounded-t-lg"

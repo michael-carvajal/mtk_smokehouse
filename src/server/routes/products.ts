@@ -7,9 +7,10 @@ export const getAllProducts = async () => {
     return allProducts;
   };
   
-  export const createProduct = async (name: string, createdBy: string) => {
+  export const createProduct = async (body) => {
     const newProduct = await db.product.create({
-      data: { name, createdBy : { connect: { id: createdBy } } }
+      data: {...body, createdBy : {connect : {email : "admin1@example.com"}}, price : parseInt(body.price)} ,
+       
     });
     return newProduct;
   };
