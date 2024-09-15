@@ -34,7 +34,7 @@ function Products() {
           <CardHeader>
             <CardTitle className='text-slate-800'>Products</CardTitle>
             <CardDescription>
-              Manage and edit your products. Selecting a product brings you to the edit page.
+              Browse our wide variety of seafood products from Smoke Salmon to delicious Farm Raise Caviar
             </CardDescription>
           </CardHeader>
           <CardContent>
