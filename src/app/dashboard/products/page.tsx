@@ -34,7 +34,7 @@ function Products() {
           <CardHeader>
             <CardTitle className='text-slate-800'>Products</CardTitle>
             <CardDescription>
-              Manage your products and view their sales performance.
+              Manage and edit your products. Selecting a product brings you to the edit page.
             </CardDescription>
           </CardHeader>
           <CardContent>

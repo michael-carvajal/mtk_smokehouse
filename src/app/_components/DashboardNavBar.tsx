@@ -62,7 +62,7 @@ function DashboardNavBar() {
                         <DropdownMenuItem><Link href="/" className="hover:text-foreground">
                             Home
                         </Link></DropdownMenuItem>
-                        <DropdownMenuItem>Support</DropdownMenuItem>
+                        <DropdownMenuItem><Link href='/dashboard/support'>Support</Link></DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem><Link href="/api/auth/signout">Logout</Link></DropdownMenuItem>
                     </DropdownMenuContent>
