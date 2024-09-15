@@ -31,8 +31,8 @@ export async function PATCH(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get('id');
+  const id = parseInt(req.url.split('/').at(-1)!);
+
 
   if (!id) {
     return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });

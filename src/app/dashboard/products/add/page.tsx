@@ -12,12 +12,12 @@ import { useRouter } from 'next/navigation';
 
 function CreateProduct() {
   const [pageState, setPageState] = useState({
-    "name": "",
-    "description": "",
+    "name": "Title",
+    "description": "Description",
     "imageLink": "",
-    "price": "",
+    "price": "2.99",
   });
-  const [isCreating, setIsCreating] = useState(false);
+  const [isCreating, setIsCreating] = useState(true);
   const router = useRouter()
 
   const setFeatureImageLink = (link) => {
@@ -59,7 +59,7 @@ function CreateProduct() {
       <CardContent className="p-0">
         <div className="relative aspect-[4/3] w-full">
           {isCreating ? <UploadImage setFeatureImageLink={setFeatureImageLink} /> : <Image
-            src={pageState.imageLink}
+            src={pageState.imageLink || '/mtk_photos/Image-not-found.webp'}
             alt={"pageState image"}
             fill
             className="object-cover rounded-t-lg"
