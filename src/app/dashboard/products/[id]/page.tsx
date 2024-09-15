@@ -1,18 +1,19 @@
 'use client'
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { api } from '~/utils/api';
-import { Edit } from 'lucide-react';
+import { Edit, Trash } from 'lucide-react';
 import UploadImage from '../../content/homePage/UploadImage';
 import { Input } from '~/components/ui/input';
 
 function ProductDetails() {
   const [pageState, setPageState] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const router = useRouter()
 
   const pathname = usePathname();
   const productId = pathname.split("/").at(-1);
@@ -47,6 +48,25 @@ function ProductDetails() {
       queryClient.invalidateQueries({ queryKey: ['updateRootsPage'] })
     },
   })
+
+  const handleProductDeletion = async () => {
+    try {
+      const response = await api.deleteProduct(pageState.id);
+
+      router.push("/dashboard/products")
+      return response
+    } catch (error) {
+      console.log('cresation error', error);
+      
+    }
+  }
+  const mutationProductDeletion = useMutation({
+    mutationFn: handleProductDeletion,
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['updateRootsPage'] })
+    },
+  })
   if (isLoading) return <div className='text-slate-800'>Loading...</div>;
   if (error) return <div className='text-slate-800'>Error: {error.message}</div>;
   const setFeatureImageLink = (link) => {
@@ -56,6 +76,7 @@ function ProductDetails() {
 
     <Card className="md:w-[400px] max-w-sm mx-auto relative">
       <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -left-20 cursor-pointer text-slate-900" />
+      <Trash onClick={() => mutationProductDeletion.mutate()} className="absolute -left-20 top-20 cursor-pointer text-red-500" />
       <CardHeader>
         <CardTitle className="text-lg">{isEditing ? (
           <Input

@@ -16,7 +16,7 @@ export const api = {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({...body}),
+      body: JSON.stringify({ ...body }),
     });
     if (!response.ok) throw new Error("Failed to create product");
     return response.json();
@@ -33,6 +33,14 @@ export const api = {
       body: JSON.stringify({ ...body }),
     });
     if (!response.ok) throw new Error("Failed to update product");
+    return response.json();
+  },
+  deleteProduct: async (id) => {
+    const response = await fetch(`/api/products/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (!response.ok) throw new Error("Failed to delete product");
     return response.json();
   },
   getHomePage: async () => {

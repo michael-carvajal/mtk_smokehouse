@@ -12,12 +12,12 @@ import { useRouter } from 'next/navigation';
 
 function CreateProduct() {
   const [pageState, setPageState] = useState({
-    "name": "",
-    "description": "",
+    "name": "Title",
+    "description": "Description",
     "imageLink": "",
-    "price": "",
+    "price": "2.99",
   });
-  const [isCreating, setIsCreating] = useState(false);
+  const [isCreating, setIsCreating] = useState(true);
   const router = useRouter()
 
   const setFeatureImageLink = (link) => {

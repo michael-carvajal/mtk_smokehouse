@@ -9,7 +9,7 @@ export const getAllProducts = async () => {
   
   export const createProduct = async (body) => {
     const newProduct = await db.product.create({
-      data: {...body, createdBy : {connect : {email : "admin1@example.com"}}, price : parseInt(body.price)} ,
+      data: {...body, createdBy : {connect : {email : "admin1@example.com"}}, price : parseFloat(body.price)} ,
        
     });
     return newProduct;
@@ -22,10 +22,10 @@ export const getAllProducts = async () => {
     return product;
 };
 
-export const updateProduct = async (id: string, updates: Partial<{ name: string, createdBy: string }>) => {
+export const updateProduct = async (id: number, updates: Partial<{ name: string, createdBy: string, price : string }>) => {
   const updatedProduct = await db.product.update({
       where: { id },
-      data: updates,
+      data: {...updates, price : parseFloat(updates.price!)},
   });
   return updatedProduct;
 };
