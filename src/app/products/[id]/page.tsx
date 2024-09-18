@@ -42,7 +42,7 @@ console.log(productId);
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Add to Cart</Button>
+        <Button className="w-full" onClick={() => alert("Feature coming soon")}>Add to Cart</Button>
       </CardFooter>
     </Card>
         </div>
