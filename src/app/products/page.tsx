@@ -41,12 +41,12 @@ function Products() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="hidden w-[100px] sm:table-cell">
+                  <TableHead className="w-[100px] sm:table-cell">
                     <span className="sr-only">Image</span>
                   </TableHead>
                   <TableHead>Name</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="hidden md:table-cell">
+                  <TableHead className="hidden md:table-cell">Status</TableHead>
+                  <TableHead >
                     Price
                   </TableHead>
                   <TableHead>
