@@ -32,7 +32,7 @@ function Products() {
       <TabsContent value="all">
         <Card x-chunk="dashboard-06-chunk-0">
           <CardHeader>
-            <CardTitle className='text-slate-800'>Products</CardTitle>
+            <CardTitle className='text-slate-800'>Our Products</CardTitle>
             <CardDescription>
               Browse our wide variety of seafood products from Smoke Salmon to delicious Farm Raise Caviar
             </CardDescription>
