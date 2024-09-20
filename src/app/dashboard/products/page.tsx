@@ -28,46 +28,49 @@ export default async function PostsPage() {
 }
 function Products() {
   return (
-    <Tabs value='all' >
-      <TabsContent value="all">
-        <Card x-chunk="dashboard-06-chunk-0">
-          <CardHeader>
-            <CardTitle className='text-slate-800'>Products</CardTitle>
-            <CardDescription>
-              Browse our wide variety of seafood products from Smoke Salmon to delicious Farm Raise Caviar
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="hidden w-[100px] sm:table-cell">
-                    <span className="sr-only">Image</span>
-                  </TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="hidden md:table-cell">
-                    Price
-                  </TableHead>
-                  <TableHead>
-                    <span className="sr-only">Actions</span>
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <DashboardProductsList />
-              </TableBody>
-            </Table>
-          </CardContent>
-          {/* <CardFooter>
-            <div className="text-xs text-muted-foreground">
-              Showing <strong>1-10</strong> of <strong>32</strong>{" "}
-              products
-            </div>
-          </CardFooter> */}
-        </Card>
-      </TabsContent>
-    </Tabs>
+    <div className="flex flex-col gap-4 items-center">
+      <h1 className="text-2xl font-bold text-slate-900">Choose a product to edit</h1>
+      <Tabs value='all' >
+        <TabsContent value="all">
+          <Card x-chunk="dashboard-06-chunk-0">
+            <CardHeader>
+              <CardTitle className='text-slate-800'>Our Products</CardTitle>
+              <CardDescription>
+                Browse our wide variety of seafood products from Smoke Salmon to delicious Farm Raise Caviar
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="hidden w-[100px] sm:table-cell">
+                      <span className="sr-only">Image</span>
+                    </TableHead>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="hidden md:table-cell">
+                      Price
+                    </TableHead>
+                    <TableHead>
+                      <span className="sr-only">Actions</span>
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <DashboardProductsList />
+                </TableBody>
+              </Table>
+            </CardContent>
+            {/* <CardFooter>
+              <div className="text-xs text-muted-foreground">
+                Showing <strong>1-10</strong> of <strong>32</strong>{" "}
+                products
+              </div>
+            </CardFooter> */}
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
   )
 }
 

@@ -3,7 +3,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="md:px-8 pt-24">
+    <footer className="md:px-8 pt-40 pb-10 md:pt-24 ">
           <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
             <p className="flex flex-wrap justify-between gap-6 text-sm leading-loose text-muted-foreground">
               <span className="">&copy; 2024 Mt. Kisco Smokehouse</span>

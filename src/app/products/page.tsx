@@ -32,21 +32,21 @@ function Products() {
       <TabsContent value="all">
         <Card x-chunk="dashboard-06-chunk-0">
           <CardHeader>
-            <CardTitle className='text-slate-800'>Products</CardTitle>
+            <CardTitle className='text-slate-800'>Our Products</CardTitle>
             <CardDescription>
-              Manage your products and view their sales performance.
+              Browse our wide variety of seafood products from Smoke Salmon to delicious Farm Raise Caviar
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="hidden w-[100px] sm:table-cell">
+                  <TableHead className="w-[100px] sm:table-cell">
                     <span className="sr-only">Image</span>
                   </TableHead>
                   <TableHead>Name</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="hidden md:table-cell">
+                  <TableHead className="hidden md:table-cell">Status</TableHead>
+                  <TableHead >
                     Price
                   </TableHead>
                   <TableHead>
