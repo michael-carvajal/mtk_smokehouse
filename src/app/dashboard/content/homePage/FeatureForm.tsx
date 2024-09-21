@@ -97,7 +97,8 @@ function FeatureForm() {
                                 </Button>
                             ) : (
                                 <a href='#'>
-                                    <Button variant='ghost' className='text-slate-600'>{featureOneLink}</Button>
+                                    <Button className='text-slate-600 bg-amber-100 hover:bg-amber-200 px-2'>
+                                        {featureOneLink}</Button>
                                 </a>
                             )}
                         </div>
@@ -120,9 +121,9 @@ function FeatureForm() {
 
                         <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
                             isEditing ? <UploadImage setFeatureImageLink={setFeatureTwoImageLink} /> :
-                            <div className="relative aspect-[4/3] w-full md:h-[190px]">
+                                <div className="relative aspect-[4/3] w-full md:h-[190px]">
                                     <Image alt='featured one of salmon' src={featureTwoImageLink} fill
-                                            className="object-cover rounded-lg" loading='lazy' />
+                                        className="object-cover rounded-lg" loading='lazy' />
                                 </div>}</div>
                         <h4>{isEditing ? <Input value={featureTwoTitle} onChange={(e) => handleInputChange(e, setFeatureTwoTitle)} /> : <>{featureTwoTitle}</>}</h4>
                         <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureTwoBody} onChange={(e) => handleInputChange(e, setFeatureTwoBody)} /> : <>{featureTwoBody}</>}</div>
@@ -133,7 +134,8 @@ function FeatureForm() {
                                 </Button>
                             ) : (
                                 <a href='#'>
-                                    <Button variant='ghost' className='text-slate-600'>{featureTwoLink}</Button>
+                                    <Button className='text-slate-600 bg-amber-100 hover:bg-amber-200 px-2'>
+                                        {featureTwoLink}</Button>
                                 </a>
                             )}
                         </div>

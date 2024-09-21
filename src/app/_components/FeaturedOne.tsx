@@ -12,11 +12,11 @@ function FeaturedOne() {
     })
     console.log('homepage data ====>', homePage);
     if (isLoading) {
-        return <div className='h=0'>Loading....</div>
+        return <div className='h=0 hidden'>Loading....</div>
     }
     return (
         <div className='flex gap-8 md:gap-8 mt-12 flex-col md:flex-row md:justify-around w-full'>
-            <div className='flex flex-col flex-1 gap-7 w-3/4 md:w-1/3 mx-auto md:mx-4 lg:mx-8 lg:w-1/3'>
+            <div className='flex flex-col flex-1 gap-7 w-[90%] md:w-1/3 mx-auto md:mx-4 lg:mx-8 lg:w-1/3'>
                 {/* Image 1: Adjust the size for different breakpoints */}
                 <div className="relative aspect-[4/3] w-full h-[190px] md:h-[240px] lg:h-[400px]">
                     <Image
@@ -38,7 +38,7 @@ function FeaturedOne() {
                 </Link>
             </div>
 
-            <div className='flex flex-col flex-1 gap-7 w-3/4 md:w-1/3 mx-auto md:mx-4 lg:mx-8 lg:w-1/3'>
+            <div className='flex flex-col flex-1 gap-7 w-[90%] md:w-1/3 mx-auto md:mx-4 lg:mx-8 lg:w-1/3'>
                 {/* Image 2: Adjust the size for different breakpoints */}
                 <div className="relative aspect-[4/3] w-full h-[190px] md:h-[240px] lg:h-[400px]">
                     <Image
@@ -54,7 +54,7 @@ function FeaturedOne() {
                     {homePage.featureTwoBody}
                 </div>
                 <Link href='/products'>
-                    <Button variant='ghost' className='text-slate-600 bg-amber-100 hover:bg-amber-200 px-2'>
+                    <Button  className='text-slate-600 bg-amber-100 hover:bg-amber-200 px-2'>
                         {homePage.featureTwoLink}
                     </Button>
                 </Link>
