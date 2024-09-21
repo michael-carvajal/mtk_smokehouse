@@ -32,7 +32,7 @@ function FeaturedOne() {
                     {homePage.featureOneBody}
                 </div>
                 <Link href='/products'>
-                    <Button variant='ghost' className='text-slate-600'>
+                    <Button  className='text-slate-600 bg-amber-100 hover:bg-amber-200 px-2'>
                         {homePage.featureOneLink}
                     </Button>
                 </Link>
@@ -54,7 +54,7 @@ function FeaturedOne() {
                     {homePage.featureTwoBody}
                 </div>
                 <Link href='/products'>
-                    <Button variant='ghost' className='text-slate-600'>
+                    <Button variant='ghost' className='text-slate-600 bg-amber-100 hover:bg-amber-200 px-2'>
                         {homePage.featureTwoLink}
                     </Button>
                 </Link>
