@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Hash the password
-  const hashedPassword = await bcrypt.hash("password", 10);
+  const hashedPassword = await bcrypt.hash("mtkSmokehouse1995", 10);
 
   await prisma.product.deleteMany();
   await prisma.blogPost.deleteMany();
@@ -17,37 +17,13 @@ async function main() {
   const user1 = await prisma.user.create({
     data: {
       name: "Admin One",
-      email: "admin1@example.com",
+      email: "admin1@email.com",
       password: hashedPassword,
       role: "admin",
     },
   });
 
-  const user2 = await prisma.user.create({
-    data: {
-      name: "Admin Two",
-      email: "admin2@example.com",
-      password: hashedPassword,
-      role: "admin",
-    },
-  });
 
-  // Create blog posts for each user
-  const blogPost1 = await prisma.blogPost.create({
-    data: {
-      title: "First Blog Post",
-      content: "Content of the first blog post",
-      author: { connect: { id: user1.id } },
-    },
-  });
-
-  const blogPost2 = await prisma.blogPost.create({
-    data: {
-      title: "Second Blog Post",
-      content: "Content of the second blog post",
-      author: { connect: { id: user2.id } },
-    },
-  });
 
   // Create products for each user
   const product1 = await prisma.product.create({
@@ -78,7 +54,7 @@ async function main() {
       description: "Farm Raised Osetra Caviar from Belgium",
       price: 19.99,
       countryCode: 1,
-      createdBy: { connect: { id: user2.id } },
+      createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/0c7b6e86-8cdd-4802-a7e4-60cc70bb86e1-mm5uny.jpg"
     },
   });
@@ -89,7 +65,7 @@ async function main() {
       description: "Daily baked fresh New York Bagels",
       price: 3.99,
       countryCode: 1,
-      createdBy: { connect: { id: user2.id } },
+      createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/3398f17a-4e4a-427e-99da-2ec5b686ab80-n3h4kc.jpg"
     },
   });
@@ -123,16 +99,13 @@ async function main() {
   const RootsPage = await prisma.ourRoot.create({
     data: {
       title : "Our Roots",
-      content : "Catsmo's founder, Robert Simon, has always been passionate about fishing. The idea of smoking his catch began when he would return home from fishing trips with too much fresh fish than his family could eat themselves. Over time, Robert perfected his smoking techniques and recipes and began sharing with chef friends in NYC. In time, Robert's little garage smoking operation grew but he never changed his fundamental principles of not compromising when it came to the quality of fish he chose nor his methods.",
+      content : "For over 10 years, Mt. Kisco Smokehouse has proudly served the greater Westchester area, delivering the finest smoked seafood with a focus on quality and tradition. While our fish may come from trusted sources beyond our shores, every step of our smoking process is done locally, right here in Westchester. Specializing in smoked salmon and trout, we use time-honored techniques to craft products that reflect our commitment to excellence. Serving the community with passion and care, Mt. Kisco Smokehouse invites you to experience the unique flavors that have made us a trusted name in the Westchester area for over a decade.",
       imageUrl : "https://utfs.io/f/34ac9c45-b876-4101-9d77-197cded3531b-43nwx0.jpg",
     },
   });
 
   console.log({
     user1,
-    user2,
-    blogPost1,
-    blogPost2,
     product1,
     product2,
     product3,

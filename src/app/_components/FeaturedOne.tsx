@@ -12,7 +12,7 @@ function FeaturedOne() {
     })
     console.log('homepage data ====>', homePage);
     if (isLoading) {
-        return <div>Loading....</div>
+        return <div className='h=0'>Loading....</div>
     }
     return (
         <div className='flex gap-8 md:gap-8 mt-12 flex-col md:flex-row md:justify-around w-full'>
