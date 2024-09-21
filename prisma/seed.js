@@ -75,7 +75,7 @@ async function main() {
       featureOneBody:
         "Our Gold Label is what made MT. Kisco Smokehouse what it is today. With its rich, buttery texture and sweet lacing of fruit-wood smoke, it accounts for most of our smoked salmon sales. Smoked with the perfect blend of apple and cherry woods, our salmon is praised for its delicate smoked flavor and silky texture. Our salmon comes from the best aquaculture farms located in the the icy Northern Atlantic off the coast of Scotland. We receive daily deliveries of fresh Atlantic salmon flown in directly from the farms fresh, never frozen, giving it an amazingly silky texture, and rich, deep orange color.",
       featureOneLink: "SHOP FOR GOLD LABEL SMOKED SALMON",
-      featureOneImageLink: "https://utfs.io/f/b6833c04-262f-4988-af69-ead5f9684893-utof43.jpg",
+      featureOneImageLink: "https://utfs.io/f/7c04feea-bea1-4b2c-8243-77bf1069c66b-v0dpsw.jpg",
       featureTwoTitle: "SMOKEHOUSE SMOKED SALMON LOIN",
       featureTwoBody:
         "As one of the most coveted cuts of smoked salmon, this center cut is the filet mignon of salmon. The salmon loin is what the Russian Czars were served during times of great celebration earning it the name ‘czar cut salmon’. The loin is one of the meatier cuts of salmon: uniform in thickness, flavorful, and with a succulent texture. For an elegant, understated presentation, place the salmon loin on a flat platter, slice it into half-inch medallions and serve with a squeeze of lemon and garnish.",
