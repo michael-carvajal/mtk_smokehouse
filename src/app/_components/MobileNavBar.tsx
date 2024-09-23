@@ -26,7 +26,12 @@ const MobileNav = () => {
         </SheetTrigger>
         <SheetContent side="left">
           <nav className="grid gap-6 text-lg font-medium">
-            <Link onClick={handleNavClick} href="#">
+            <Link onClick={handleNavClick} href="/">
+              <Button variant="ghost" className="text-slate-600 tracking-wider font-thin">
+                Home
+              </Button>
+            </Link>
+            <Link onClick={handleNavClick} href="/products">
               <Button variant="ghost" className="text-slate-600 tracking-wider font-thin">
                 Smoked Salmon
               </Button>
