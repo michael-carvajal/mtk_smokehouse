@@ -1,15 +1,15 @@
 // src/app/api/create-checkout-session/route.ts
 import { type NextRequest, NextResponse } from 'next/server';
 import { createProduct, getAllProducts } from '~/server/routes/products';
-import {createCheckoutSession} from '~/server/routes/stripe'
+import createCheckoutSession from '~/server/routes/stripe'
 // export async function GET(req: NextRequest) {
 //   const allProducts = await getAllProducts();
 //   return NextResponse.json(allProducts);
 // }
 
 export async function POST(req: NextRequest) {
-  // const body = await req.json();
-  const session = await createCheckoutSession();
-  console.log('checkout session ----->', session)
+  const body = await req.json();
+  
+  const session = await createCheckoutSession(body.priceId, body.quantity, req);
   return NextResponse.json({clientSecret : session.clientSecret}); 
 }

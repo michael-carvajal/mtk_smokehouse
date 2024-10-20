@@ -11,6 +11,10 @@ export default function EmbeddedCheckoutComp() {
     // Create a Checkout Session
     return fetch("/api/stripe/create-checkout-session", {
       method: "POST",
+      headers :  {
+    "Content-Type": "application/json",
+  }, 
+      body : JSON.stringify({priceId : "price_1QBnkNAOSV4xdGhWP1dQv4Yn", quantity : 2})
     })
       .then((res) => res.json())
       .then((data) => data.clientSecret);
