@@ -14,7 +14,6 @@ export const createCheckoutSession = async () => {
       mode: 'payment',
       return_url: `${'http://localhost:3000'}/return.html?session_id={CHECKOUT_SESSION_ID}`,
     });
-    console.log('checkout session ----->', session.client_secret)
     return { clientSecret: session.client_secret };
   } catch (error) {
     console.error('Error creating checkout session:', error);

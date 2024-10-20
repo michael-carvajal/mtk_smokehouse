@@ -11,5 +11,5 @@ export async function POST(req: NextRequest) {
   // const body = await req.json();
   const session = await createCheckoutSession();
   console.log('checkout session ----->', session)
-  return NextResponse.json(JSON.stringify(session.clientSecret)); 
+  return NextResponse.json({clientSecret : session.clientSecret}); 
 }
