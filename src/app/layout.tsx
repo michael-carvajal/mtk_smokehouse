@@ -9,6 +9,7 @@ import { extractRouterConfig } from "uploadthing/server";
 
 import { ourFileRouter } from "~/app/api/uploadthing/core"
 import Footer from "./_components/Footer";
+import { CartProvider } from "~/context/cartContext";
 export const metadata: Metadata = {
   title: "MT. Kisco Smokehouse",
   description: "Come find your next favorite seafood products",
@@ -33,9 +34,11 @@ export default async function RootLayout({
       <body className="flex flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen">
 
         <Providers>
-          <RenderNavBar />
-          {children}
-          <Footer />
+          <CartProvider>
+            <RenderNavBar />
+            {children}
+            <Footer />
+          </ CartProvider >
         </Providers>
       </body>
     </html>
