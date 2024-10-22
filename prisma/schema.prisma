@@ -106,6 +106,7 @@ model Product {
   name    String
   description String?
   imageLink    String?
+  stripePriceId    String?
   price       Float?
   countryCode Int?
   createdBy   User   @relation(fields: [createdById], references: [id])
