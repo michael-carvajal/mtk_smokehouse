@@ -27,7 +27,7 @@ function ProductDetails() {
   const handleAddToCart = () => {
     if (product) {
       addItem({
-        priceId: product.stripePriceId, // Assuming the product has a priceId property
+        priceId: product.stripePriceId || product.id, // Assuming the product has a priceId property
         quantity,
       });
       alert(`${quantity} ${product.name} added to cart!`); // Notify user

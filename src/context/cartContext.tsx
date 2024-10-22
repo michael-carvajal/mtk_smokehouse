@@ -1,5 +1,5 @@
 'use client'
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Define the shape of your cart item
 interface CartItem {
@@ -28,12 +28,25 @@ export const useCart = () => {
   return context;
 };
 
+// Helper function to get cart from localStorage
+const getCartFromLocalStorage = (): CartItem[] => {
+  const storedCart = typeof window !== 'undefined' ? localStorage.getItem('cart') : null;
+  return storedCart ? JSON.parse(storedCart) : [];
+};
+
 // Provider component
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(getCartFromLocalStorage);
+
+  // Save cart to localStorage whenever the cart state changes
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   // Function to add an item or update quantity if the item exists
   const addItem = (newItem: CartItem) => {
+    console.log('new item in add item----->', newItem);
+    
     setCart((prevCart) => {
       const existingItem = prevCart.find(item => item.priceId === newItem.priceId);
       if (existingItem) {
@@ -77,4 +90,3 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     </CartContext.Provider>
   );
 };
-
