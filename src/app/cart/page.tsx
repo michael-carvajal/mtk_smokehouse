@@ -1,8 +1,15 @@
 'use client';
-import { useCart } from "~/context/cartContext";
+import { useEffect, useState } from 'react';
+import { useCart } from '~/context/cartContext';
 
-export default function CheckoutPage() {
+export default function CartPage() {
   const { cart, updateQuantity, removeItem } = useCart();
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure this code only runs on the client
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleQuantityChange = (priceId: string, newQuantity: number) => {
     if (newQuantity <= 0) {
@@ -31,23 +38,28 @@ export default function CheckoutPage() {
     }
   };
 
+  // Don't render the cart until on the client
+  if (!isClient) {
+    return null;
+  }
+
   return (
-    <div className="min-h-screen  text-black p-4">
+    <div className="min-h-screen text-black p-4">
       <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
       {cart.length === 0 ? (
         <p className="text-lg">Your cart is empty</p>
       ) : (
         cart.map(item => (
-          <div key={item.priceId} className="bg-gray-700 rounded-md p-4 mb-4">
+          <div key={item.priceId} className="rounded-md p-4 mb-4">
             <p>Price ID: {item.priceId}</p>
             <input
               type="number"
               value={item.quantity}
               onChange={(e) => handleQuantityChange(item.priceId, Number(e.target.value))}
-              className="border border-gray-500 bg-gray-600 text-black rounded-md p-1"
+              className="border 0 text-black rounded-md p-1"
             />
-            <button 
-              onClick={() => removeItem(item.priceId)} 
+            <button
+              onClick={() => removeItem(item.priceId)}
               className="ml-2 bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-500"
             >
               Remove
@@ -55,8 +67,8 @@ export default function CheckoutPage() {
           </div>
         ))
       )}
-      <button 
-        onClick={handleCheckout} 
+      <button
+        onClick={handleCheckout}
         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500"
       >
         Checkout
