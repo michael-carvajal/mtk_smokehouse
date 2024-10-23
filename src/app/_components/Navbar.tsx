@@ -3,7 +3,7 @@ import { Button } from '../../components/ui/button'
 import Link from 'next/link';
 import Image from 'next/image';
 import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet';
-import { Menu, Package2 } from 'lucide-react';
+import { Menu, Package2, ShoppingCart } from 'lucide-react';
 import DashboardNavLinks from './DashboardNavLinks';
 import MobileNav from './MobileNavBar';
 const Navbar = () => {
@@ -44,6 +44,9 @@ const Navbar = () => {
         </div>
       </nav>
       <MobileNav />
+      <Link href='/cart' className='text-slate-600 absolute right-14 top-14'>
+        <ShoppingCart />
+      </Link>
     </>
   );
 };
