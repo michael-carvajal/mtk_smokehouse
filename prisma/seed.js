@@ -31,6 +31,7 @@ async function main() {
       name: "Smoked Salmon",
       description: "Delicious smoked salmon",
       price: 29.99,
+      stripePriceId : "price_1QBnkNAOSV4xdGhWP1dQv4Yn",
       countryCode: 1,
       createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/70d86930-457e-4a6a-8957-421c21f683a0-xnxmog.jpg"

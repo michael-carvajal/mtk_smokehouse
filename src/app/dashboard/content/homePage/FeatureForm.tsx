@@ -1,6 +1,8 @@
 'use client'
 
-import { Edit } from 'lucide-react'
+import { 
+    
+ } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
@@ -30,7 +32,9 @@ function FeatureForm() {
     const [featureTwoLink, setFeatureTwoLink] = useState("");
     const [featureTwoImageLink, setFeatureTwoImageLink] = useState("");
 
-    const [isEditing, setIsEditing] = useState(false);
+    const [is
+        ing, setIs
+        ing] = useState(false);
 
     // Use useEffect to update the state when homePage data is available
     useEffect(() => {
@@ -80,18 +84,25 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72 relative'>
-                        <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
+                        <
+                             onClick={() => setIs
+                            ing(!is
+                            ing)} className="absolute -right-20 cursor-pointer" />
                         <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
-                            isEditing ? <UploadImage setFeatureImageLink={setFeatureOneImageLink} /> :
+                            is
+                            ing ? <UploadImage setFeatureImageLink={setFeatureOneImageLink} /> :
 
                                 <div className="relative aspect-[4/3] w-full md:h-[190px]">
                                     <Image alt='featured one of salmon' src={featureOneImageLink} fill
                                         className="object-cover rounded-lg" loading='lazy' />
                                 </div>}</div>
-                        <h4>{isEditing ? <Input value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
-                        <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
+                        <h4>{is
+                        ing ? <Input value={featureOneTitle} onChange={(e) => handleInputChange(e, setFeatureOneTitle)} /> : <>{featureOneTitle}</>}</h4>
+                        <div className='text-xs font-semibold text-slate-400 '>{is
+                        ing ? <Textarea className='min-h-[300px]' value={featureOneBody} onChange={(e) => handleInputChange(e, setFeatureOneBody)} /> : <>{featureOneBody}</>}</div>
                         <div className="w-full flex gap-8">
-                            {isEditing ? (
+                            {is
+                            ing ? (
                                 <Button variant='ghost' className='text-slate-600 w-full relative'>
                                     <Input value={featureOneLink} onChange={(e) => handleInputChange(e, setFeatureOneLink)} />
                                 </Button>
@@ -117,18 +128,25 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className='flex flex-col flex-1 gap-7 max-w-72 relative'>
-                        <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
+                        <
+                             onClick={() => setIs
+                            ing(!is
+                            ing)} className="absolute -right-20 cursor-pointer" />
 
                         <div className='flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full'>{
-                            isEditing ? <UploadImage setFeatureImageLink={setFeatureTwoImageLink} /> :
+                            is
+                            ing ? <UploadImage setFeatureImageLink={setFeatureTwoImageLink} /> :
                                 <div className="relative aspect-[4/3] w-full md:h-[190px]">
                                     <Image alt='featured one of salmon' src={featureTwoImageLink} fill
                                         className="object-cover rounded-lg" loading='lazy' />
                                 </div>}</div>
-                        <h4>{isEditing ? <Input value={featureTwoTitle} onChange={(e) => handleInputChange(e, setFeatureTwoTitle)} /> : <>{featureTwoTitle}</>}</h4>
-                        <div className='text-xs font-semibold text-slate-400 '>{isEditing ? <Textarea className='min-h-[300px]' value={featureTwoBody} onChange={(e) => handleInputChange(e, setFeatureTwoBody)} /> : <>{featureTwoBody}</>}</div>
+                        <h4>{is
+                        ing ? <Input value={featureTwoTitle} onChange={(e) => handleInputChange(e, setFeatureTwoTitle)} /> : <>{featureTwoTitle}</>}</h4>
+                        <div className='text-xs font-semibold text-slate-400 '>{is
+                        ing ? <Textarea className='min-h-[300px]' value={featureTwoBody} onChange={(e) => handleInputChange(e, setFeatureTwoBody)} /> : <>{featureTwoBody}</>}</div>
                         <div className="w-full flex gap-8 relative">
-                            {isEditing ? (
+                            {is
+                            ing ? (
                                 <Button variant='ghost' className='text-slate-600 w-full relative'>
                                     <Input value={featureTwoLink} onChange={(e) => handleInputChange(e, setFeatureTwoLink)} />
                                 </Button>
