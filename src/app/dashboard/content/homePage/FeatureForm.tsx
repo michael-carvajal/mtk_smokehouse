@@ -1,6 +1,6 @@
 'use client'
 
-import {  } from 'lucide-react'
+import { Edit } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
@@ -28,6 +28,7 @@ function FeatureForm() {
     const [featureTwoBody, setFeatureTwoBody] = useState("");
     const [featureTwoLink, setFeatureTwoLink] = useState("");
     const [featureTwoImageLink, setFeatureTwoImageLink] = useState("");
+    const [isEditing, setIsEditing] = useState(false);
 
     // Use useEffect to update the state when homePage data is available
     useEffect(() => {
@@ -75,6 +76,7 @@ function FeatureForm() {
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-col flex-1 gap-7 max-w-72 relative">
+                    <Edit onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
                         <div onClick={() => setIsEditing(!isEditing)} className="absolute -right-20 cursor-pointer" />
                         <div className="flex justify-center items-center h-60 my-0 mt-4 rounded mx-auto w-full">
                             {isEditing ? (
