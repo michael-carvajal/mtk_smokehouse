@@ -32,9 +32,6 @@ function FeatureForm() {
     const [featureTwoLink, setFeatureTwoLink] = useState("");
     const [featureTwoImageLink, setFeatureTwoImageLink] = useState("");
 
-    const [is
-        ing, setIs
-        ing] = useState(false);
 
     // Use useEffect to update the state when homePage data is available
     useEffect(() => {
