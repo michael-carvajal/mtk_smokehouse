@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useCart } from '~/context/cartContext';
 
@@ -67,12 +68,14 @@ export default function CartPage() {
           </div>
         ))
       )}
-      <button
-        onClick={handleCheckout}
-        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500"
-      >
-        Checkout
-      </button>
+      <Link href='/checkout'>
+        <button
+          onClick={handleCheckout}
+          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500"
+        >
+          Checkout
+        </button>
+      </Link>
     </div>
   );
 }

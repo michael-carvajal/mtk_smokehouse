@@ -2,9 +2,7 @@ import React from 'react';
 import { Button } from '../../components/ui/button'
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet';
-import { Menu, Package2, ShoppingCart } from 'lucide-react';
-import DashboardNavLinks from './DashboardNavLinks';
+import { ShoppingCart } from 'lucide-react';
 import MobileNav from './MobileNavBar';
 const Navbar = () => {
 
