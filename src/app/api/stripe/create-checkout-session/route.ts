@@ -9,7 +9,10 @@ import createCheckoutSession from '~/server/routes/stripe'
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
+  console.log('body in api ---------->', body
+  );
   
-  const session = await createCheckoutSession(body.priceId, body.quantity, req);
+  
+  const session = await createCheckoutSession(JSON.parse(body), req, undefined);
   return NextResponse.json({clientSecret : session.clientSecret}); 
 }

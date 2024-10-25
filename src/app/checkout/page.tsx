@@ -6,20 +6,14 @@ import {
   EmbeddedCheckout
 } from '@stripe/react-stripe-js';
 import { useCart } from '~/context/cartContext';
+import { useParams, useSearchParams } from 'next/navigation';
 
 const stripePromise = loadStripe("pk_test_51QAuDDAOSV4xdGhW7bX3wpHlxTEkMMLvj7x7KdqEL0I20QRxe3XsboUqFDra5ej5VoCpTgttUYbqySAN36lsahfS00PgYNw92W");
 
 export default function EmbeddedCheckoutComp() {
-  const { cart } = useCart(); // Use the cart from context
-
-  // Function to create the body for the checkout session
-  const createCheckoutSessionBody = () => {
-    return cart.map((item) => ({
-      priceId: item.priceId,
-      quantity: item.quantity
-    }));
-  };
-
+const params = useSearchParams();
+const cart = params.get('cart')
+console.log('data--------> ', cart);
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session using the cart items
     return fetch("/api/stripe/create-checkout-session", {
@@ -27,12 +21,17 @@ export default function EmbeddedCheckoutComp() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(createCheckoutSessionBody()), // Send the cart data
+      body: JSON.stringify(cart), // Send the cart data
     })
       .then((res) => res.json())
-      .then((data) => data.clientSecret);
+      .then((data) => {
+        console.log('data--------> ', data);
+        
+        return data.clientSecret
+      });
   }, [cart]); // Rerun the function when the cart changes
 
+  
   const options = { fetchClientSecret };
 
   return (
