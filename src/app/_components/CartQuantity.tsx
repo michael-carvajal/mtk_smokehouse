@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 
 interface CartItem {
     priceId: string;
@@ -10,12 +11,21 @@ interface CartQuantityProps {
 }
 
 const CartQuantity: React.FC<CartQuantityProps> = ({ cart }) => {
-    // Sum up the total quantity from the cart
-    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const [totalQuantity, setTotalQuantity] = useState(0);
+    const [mounted, setMounted] = useState(false);
 
-    // Only display if there are items in the cart
-    if (totalQuantity === 0) {
-        return null; // Don't render anything if the cart is empty
+    useEffect(() => {
+        // Sum up the total quantity from the cart
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        setTotalQuantity(total);
+
+        // Mark component as mounted to prevent hydration issues
+        setMounted(true);
+    }, [cart]);
+
+    // Only display after the component has mounted (to prevent SSR mismatch)
+    if (!mounted || totalQuantity === 0) {
+        return null; // Don't render anything if the cart is empty or component not mounted
     }
 
     return (
