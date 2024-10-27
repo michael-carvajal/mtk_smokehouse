@@ -1,55 +1,37 @@
 import { stripe } from "libs/stripe";
 import { NextRequest } from "next/server";
 
-// export const createCheckoutSession = async () => {
-//   try {
-//     const session = await stripe.checkout.sessions.create({
-//       ui_mode: 'embedded',
-//       line_items: [
-//         {
-//           // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-//           price: 'price_1QBnkNAOSV4xdGhWP1dQv4Yn', // Replace with your actual price ID
-//           quantity: 1,
-//         },
-//       ],
-//       mode: 'payment',
-//       return_url: `${'http://localhost:3000'}/return.html?session_id={CHECKOUT_SESSION_ID}`,
-//     });
-//     return { clientSecret: session.client_secret };
-//   } catch (error) {
-//     console.error('Error creating checkout session:', error);
-//     throw error; // Handle the error as needed
-//   }
-// };
-
-export default async function createCheckoutSession(priceId: string, quantity: string, req: NextRequest, sessionId: string | undefined) {
-  console.log('priceId and quantity ===>', priceId, quantity);
-
+export default async function createCheckoutSession(items, req: NextRequest, sessionId: string | undefined) {
+  console.log(typeof items);
+  console.log(items);
+  
   switch (req.method) {
     case "POST":
       try {
-        // Determine the origin from headers
         const referer = req.headers.get('referer');
         const host = req.headers.get('host');
         const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-
-        // Build the origin using host, fallback to referer if host is unavailable
         const origin = host ? `${protocol}://${host}` : referer;
 
         if (!origin) {
           throw new Error('Unable to determine the origin URL.');
         }
 
-        // Create Checkout Session
+        // Ensure the items array is in the correct format
+        if (!Array.isArray(items) || items.length === 0) {
+          throw new Error('Items array is missing or empty.');
+        }
+
+        // Map over the items array to create line_items for each item in the cart
+        const lineItems = items.map(item => ({
+          price: item.priceId,            // Price ID of the product
+          quantity: Number(item.quantity), // Convert quantity to a number
+        }));
+
+        // Create Checkout Session with multiple line items
         const session = await stripe.checkout.sessions.create({
           ui_mode: 'embedded',
-          line_items: [
-            {
-              // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-              price: priceId,
-              quantity: Number(quantity),  // Ensure quantity is passed as a number
-            },
-          ],
+          line_items: lineItems,
           mode: 'payment',
           return_url: `${origin}/return?session_id={CHECKOUT_SESSION_ID}`,
         });

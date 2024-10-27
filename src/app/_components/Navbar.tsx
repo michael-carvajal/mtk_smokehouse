@@ -1,13 +1,13 @@
+'use cart'
 import React from 'react';
 import { Button } from '../../components/ui/button'
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet';
-import { Menu, Package2, ShoppingCart } from 'lucide-react';
-import DashboardNavLinks from './DashboardNavLinks';
 import MobileNav from './MobileNavBar';
+import CartQuantity from './CartQuantity';
+import { useCart } from '~/context/cartContext';
 const Navbar = () => {
-
+    const {cart} = useCart()
   return (
     <>
       <nav className='mb-10'>
@@ -44,8 +44,8 @@ const Navbar = () => {
         </div>
       </nav>
       <MobileNav />
-      <Link href='/cart' className='text-slate-600 absolute right-14 top-14'>
-        <ShoppingCart />
+      <Link href='/cart' className='text-slate-600 absolute right-20 top-16 flex gap-10'>
+        <CartQuantity cart={cart} />
       </Link>
     </>
   );
