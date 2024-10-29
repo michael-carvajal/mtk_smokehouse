@@ -42,19 +42,21 @@ async function main() {
     data: {
       name: "Smoked Trout",
       description: "Delicious smoked trout",
+      stripePriceId : "price_1QEvykAOSV4xdGhWPwDAggYi",
       price: 24.99,
       countryCode: 1,
       createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/68b52bdf-2615-4f1c-9b44-5ea3fcedc9f3-1tvaj4.jpg"
     },
   });
-
+  
   const product3 = await prisma.product.create({
     data: {
       name: "Caviar",
       description: "Farm Raised Osetra Caviar from Belgium",
       price: 19.99,
       countryCode: 1,
+      stripePriceId : "price_1QEw3gAOSV4xdGhWauLQrhNS",
       createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/0c7b6e86-8cdd-4802-a7e4-60cc70bb86e1-mm5uny.jpg"
     },
@@ -66,6 +68,7 @@ async function main() {
       description: "Daily baked fresh New York Bagels",
       price: 3.99,
       countryCode: 1,
+      stripePriceId : "price_1QFLFAAOSV4xdGhWEMLLCaM7",
       createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/3398f17a-4e4a-427e-99da-2ec5b686ab80-n3h4kc.jpg"
     },
