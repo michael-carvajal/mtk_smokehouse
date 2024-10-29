@@ -27,15 +27,15 @@ export default function CartPage() {
 
   // Encode the cart array as a JSON string and then encodeURIComponent
   const cartQueryString = encodeURIComponent(JSON.stringify(cart));
-
+  let cartLength = cart.length;
   return (
-    <div className="min-h-screen text-black p-4">
+    <div className="min-h-screen text-black p-4 flex flex-col gap-6">
       <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
-      {cart.length === 0 ? (
+      {cartLength === 0 ? (
         <p className="text-lg">Your cart is empty</p>
       ) : (
         cart.map((item) => (
-          <div key={item.priceId} className="rounded-md p-4 mb-4">
+          <div key={item.priceId} className="rounded-md">
             <p>Price ID: {item.priceId}</p>
             <input
               type="number"
@@ -54,11 +54,19 @@ export default function CartPage() {
       )}
 
       {/* Pass the cart as an encoded JSON string in the URL */}
+      {cartLength === 0 ? 
+      <Link href='/products'>
+      <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500">
+        Shop our products
+      </button>
+    </Link>
+      :
+      
       <Link href={`/checkout?cart=${cartQueryString}`}>
         <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500">
           Checkout
         </button>
-      </Link>
+      </Link>}
     </div>
   );
 }
