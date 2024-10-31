@@ -2,8 +2,6 @@ import { stripe } from "libs/stripe";
 import { NextRequest } from "next/server";
 
 export default async function createCheckoutSession(items, req: NextRequest, sessionId: string | undefined) {
-  console.log(typeof items);
-  console.log(items);
   
   switch (req.method) {
     case "POST":

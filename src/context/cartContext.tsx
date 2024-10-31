@@ -2,7 +2,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Define the shape of your cart item
-interface CartItem {
+export interface CartItem {
   priceId: string;
   quantity: number;
 }
