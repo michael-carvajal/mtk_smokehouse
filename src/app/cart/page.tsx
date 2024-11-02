@@ -2,10 +2,13 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useCart } from '~/context/cartContext';
 import { api } from '~/utils/api';
 import { filterCartItems } from './filterCartItems';
+import { Input } from '~/components/ui/input';
+import { Trash } from 'lucide-react';
 
 export default function CartPage() {
   const { cart, updateQuantity, removeItem } = useCart();
@@ -20,11 +23,11 @@ export default function CartPage() {
   }, []);
 
   if (!isClient || isLoading || isError) return null;
-  console.log('all roducts =====> ', allProducts );
-  
+  console.log('all roducts =====> ', allProducts);
+
   const filteredCartItems = filterCartItems(cart, allProducts);
   console.log('filtered cart items ---->', filteredCartItems);
-  
+
   return (
     <div className="min-h-screen text-black p-4 flex flex-col gap-6">
       <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
@@ -33,22 +36,21 @@ export default function CartPage() {
       ) : (
         filteredCartItems.map((item) => (
           <div key={item.priceId} className="rounded-md flex items-center gap-4 p-4 border-b">
-            <img src={item.imageLink} alt={item.name} className="w-16 h-16 rounded-md" />
+            <div className="relative aspect-[4/3]  h-32 sm:h-48 md:h-48 lg:h-64">
+              <Image
+                fill
+                src={item.imageLink} alt={item.name} className="w-16 h-16 rounded-md" />
+            </div>
             <div className="flex-1">
               <p className="font-semibold">{item.name}</p>
-              <input
+              <Input
                 type="number"
                 value={item.quantity}
                 onChange={(e) => updateQuantity(item.priceId, Number(e.target.value))}
                 className="border text-black rounded-md p-1"
               />
             </div>
-            <button
-              onClick={() => removeItem(item.priceId)}
-              className="ml-2 bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-500"
-            >
-              Remove
-            </button>
+            <Trash onClick={() => removeItem(item.priceId)} color='red' className='mt-5' />
           </div>
         ))
       )}
