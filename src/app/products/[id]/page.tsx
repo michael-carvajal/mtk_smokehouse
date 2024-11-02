@@ -7,6 +7,7 @@ import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { api } from '~/utils/api';
 import { useCart } from "~/context/cartContext"; // Import the Cart Context
+import { QuantityInput } from '~/components/ui/quantity-input';
 
 function ProductDetails() {
   const pathname = usePathname();
@@ -33,7 +34,7 @@ function ProductDetails() {
       alert(`${quantity} ${product.name} added to cart!`); // Notify user
     }
   };
-console.log(cart);
+  console.log(cart);
 
   return (
     <div className='text-xl text-slate-800'>
@@ -55,14 +56,12 @@ console.log(cart);
             <p className="text-sm text-gray-600">{product.description}</p>
             {/* Quantity Selection */}
             <div className="flex items-center mt-4">
-              <label htmlFor="quantity" className="mr-2">Quantity:</label>
-              <input
-                type="number"
-                id="quantity"
+              <QuantityInput
                 value={quantity}
-                min="1"
-                onChange={(e) => setQuantity(Number(e.target.value))}
-                className="border border-gray-500 rounded-md p-1 w-16 text-center"
+                onChange={(newQuantity) => setQuantity(newQuantity)}
+                min={1}
+                max={10}
+                step={1}
               />
             </div>
           </div>
