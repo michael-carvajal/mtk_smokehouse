@@ -31,7 +31,7 @@ function StripeEmbeddedCheckout() {
   const options = { fetchClientSecret };
 
   return (
-    <div id="checkout">
+    <div id="checkout" style={{width : "80%"}}>
       <EmbeddedCheckoutProvider
         stripe={stripePromise}
         options={options}
