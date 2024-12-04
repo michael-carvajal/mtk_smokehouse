@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useCart } from '~/context/cartContext';
 import { api } from '~/utils/api';
 import { filterCartItems } from './filterCartItems';
-import { Trash } from 'lucide-react';
+import { ArrowLeftSquare, Trash } from 'lucide-react';
 import { QuantityInput } from '~/components/ui/quantity-input';
 
 export default function CartPage() {
@@ -29,7 +29,10 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen text-black p-4 flex flex-col gap-6">
-      <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
+      <div className='flex justify-between'>
+        <h1 className="text-3xl font-bold">Your Cart</h1>
+        <Link href='/products' className='flex items-center gap-2'><ArrowLeftSquare />  Continue Shopping</Link>
+      </div>
       {filteredCartItems.length === 0 ? (
         <p className="text-lg">Your cart is empty</p>
       ) : (
@@ -52,11 +55,11 @@ export default function CartPage() {
                 max={10}
                 step={1}
               />
-            <Trash
-              onClick={() => removeItem(item.priceId)}
-              color='red'
-              className='cursor-pointer'
-            />
+              <Trash
+                onClick={() => removeItem(item.priceId)}
+                color='red'
+                className='cursor-pointer'
+              />
             </div>
           </div>
         ))
