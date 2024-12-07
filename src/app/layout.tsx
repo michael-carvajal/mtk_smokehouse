@@ -10,6 +10,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "~/app/api/uploadthing/core"
 import Footer from "./_components/Footer";
 import { CartProvider } from "~/context/cartContext";
+import NavToDashboard from "./_components/NavToDashboard";
 export const metadata: Metadata = {
   title: "MT. Kisco Smokehouse",
   description: "Come find your next favorite seafood products",
@@ -31,13 +32,14 @@ export default async function RootLayout({
          */
         routerConfig={extractRouterConfig(ourFileRouter)}
       />
-      <body className="flex flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen">
+      <body className="flex flex-col items-center  bg-gradient-to-b from-[#fffef7] to-[#feffee] text-white min-h-screen relative">
 
         <Providers>
           <CartProvider>
             <RenderNavBar />
             {children}
             <Footer />
+            <NavToDashboard />
           </ CartProvider >
         </Providers>
       </body>
