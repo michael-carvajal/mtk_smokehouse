@@ -24,14 +24,18 @@ function CreateProduct() {
     setPageState({ ...pageState, imageLink: link })
   }
   const handleProductCreation = async () => {
+    const pageStateCopy = { ...pageState }
+    if (pageStateCopy.imageLink === "") {
+      pageStateCopy.imageLink = "https://utfs.io/f/lYW4Ny0BCVb4wuufO82H8lgKiCLTs2YOXWort74BwqehDM5d"
+    }
     try {
-      const response = await api.createProduct(pageState);
+      const response = await api.createProduct(pageStateCopy);
 
       router.push("/dashboard/products")
       return response
     } catch (error) {
       console.log('cresation error', error);
-      
+
     }
   }
 
@@ -39,7 +43,7 @@ function CreateProduct() {
     mutationFn: handleProductCreation,
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ['updateRootsPage'] })
+      queryClient.invalidateQueries({ queryKey: ['handleProductCreation'] })
     },
   })
   return (

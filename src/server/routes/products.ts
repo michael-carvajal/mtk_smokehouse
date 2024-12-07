@@ -18,6 +18,7 @@ export const createProduct = async (body: {
   name: string;
   description?: string;
   price: string;
+  imageLink: string;
   // Add other fields as necessary
 }) => {
   return await db.$transaction(async (tx) => {
@@ -25,6 +26,7 @@ export const createProduct = async (body: {
     const stripeProduct = await stripe.products.create({
       name: body.name,
       description: body.description,
+      images: [body.imageLink],
     });
 
     // Create price in Stripe
@@ -42,6 +44,7 @@ export const createProduct = async (body: {
         price: parseFloat(body.price),
         stripeProductId: stripeProduct.id,
         stripePriceId: stripePrice.id,
+        imageLink: body.imageLink,
       },
     });
 
@@ -53,6 +56,7 @@ export const updateProduct = async (id: string, updates: Partial<{
   name: string, 
   description?: string,
   price: string 
+  imageLink: string
   // Add other fields as necessary
 }>) => {
   return await db.$transaction(async (tx) => {
