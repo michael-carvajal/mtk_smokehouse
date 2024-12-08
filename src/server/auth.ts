@@ -1,13 +1,11 @@
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import {
   getServerSession,
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
-import DiscordProvider from "next-auth/providers/discord";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { env } from "~/env";
 import { db } from "~/server/db";
 import { compare } from "bcrypt";
 
@@ -78,7 +76,7 @@ export const authOptions: NextAuthOptions = {
 
         if (
           !user ||
-          !(await verifyPassword(credentials.password, user.password))
+          !(await verifyPassword(credentials.password, user.password ?? ''))
         ) {
           throw new Error("Invalid email or password");
         }
