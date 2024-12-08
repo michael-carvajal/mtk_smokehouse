@@ -32,6 +32,7 @@ async function main() {
       description: "Delicious smoked salmon",
       price: 29.99,
       stripePriceId : "price_1QBnkNAOSV4xdGhWP1dQv4Yn",
+      stripeProductId : "prod_R3vUbcf0yZIxOY",
       countryCode: 1,
       createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/70d86930-457e-4a6a-8957-421c21f683a0-xnxmog.jpg"
@@ -43,6 +44,7 @@ async function main() {
       name: "Smoked Trout",
       description: "Delicious smoked trout",
       stripePriceId : "price_1QEvykAOSV4xdGhWPwDAggYi",
+      stripeProductId : "prod_R7AJolN5lHzyil",
       price: 24.99,
       countryCode: 1,
       createdBy: { connect: { id: user1.id } },
@@ -57,6 +59,7 @@ async function main() {
       price: 19.99,
       countryCode: 1,
       stripePriceId : "price_1QEw3gAOSV4xdGhWauLQrhNS",
+      stripeProductId : "prod_R7AObdvvfJ1IDZ",
       createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/0c7b6e86-8cdd-4802-a7e4-60cc70bb86e1-mm5uny.jpg"
     },
@@ -69,6 +72,7 @@ async function main() {
       price: 3.99,
       countryCode: 1,
       stripePriceId : "price_1QFLFAAOSV4xdGhWEMLLCaM7",
+      stripeProductId : "prod_R7aPZ5nZZYq5Wv",
       createdBy: { connect: { id: user1.id } },
       imageLink : "https://utfs.io/f/3398f17a-4e4a-427e-99da-2ec5b686ab80-n3h4kc.jpg"
     },

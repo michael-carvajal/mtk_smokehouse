@@ -1,6 +1,6 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { Button } from '~/components/ui/button';
@@ -11,6 +11,7 @@ import { QuantityInput } from '~/components/ui/quantity-input';
 
 function ProductDetails() {
   const pathname = usePathname();
+  const router = useRouter();
   const productId = pathname.split("/").at(-1);
   const { data: product, error, isLoading } = useQuery({
     queryKey: ['product', productId],
@@ -31,7 +32,7 @@ function ProductDetails() {
         priceId: product.stripePriceId || product.id, // Assuming the product has a priceId property
         quantity,
       });
-      alert(`${quantity} ${product.name} added to cart!`); // Notify user
+      router.push('/cart'); 
     }
   };
   console.log(cart);
